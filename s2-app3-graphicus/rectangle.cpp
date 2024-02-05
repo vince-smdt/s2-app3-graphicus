@@ -2,6 +2,8 @@
  * Fichier: rectangle.cpp
  * Auteurs: Vincent Simard-Schmidt (simv2104) & Kevin Gauvin (gauk1703)
  * Date: 05 janvier 2024 (creation)
+ * Modifie par : Vincent Simard-Schmidt (simv2104) & Kevin Gauvin (gauk1703)
+ * Date : 05 fevrier 2024
  * Description: Implementation des methodes des classes decrites dans
  *    rectangle.h. Ce fichier fait partie de la distribution de Graphicus.
 ********/
@@ -20,7 +22,5 @@ double Rectangle::aire() {
 }
 
 void Rectangle::afficher(ostream &flot) {
-    flot << "Rectangle (x=" << ancrage.x << ", y=" << ancrage.y
-        << ", l=" << _dimensions.x << ", h=" << _dimensions.y 
-        << ", aire=" << aire() << ")" << endl;
+    flot << "C " << ancrage.x << " " << ancrage.y << " " << _dimensions.x << " " << _dimensions.y << endl;
 }

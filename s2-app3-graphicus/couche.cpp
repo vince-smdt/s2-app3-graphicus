@@ -3,7 +3,7 @@
  * Auteurs: C.-A. Brunet
  * Date: 04 janvier 2024 (creation)
  * Modifie par : Vincent Simard-Schmidt (simv2104) & Kevin Gauvin (gauk1703)
- * Date : 05 janvier 2024
+ * Date : 05 fevrier 2024
  * Description: Implementation des methodes des classes decrites dans
  *    couche.h. Ce fichier fait partie de la distribution de Graphicus.
 ********/
@@ -67,19 +67,14 @@ double Couche::aireTotal() {
 }
 
 void Couche::afficher(ostream &flot) {
-    flot << "Etat: ";
+    flot << "L ";
     switch (etat) {
-        case Initialisee:   flot << "initialisee";  break;
-        case Active:        flot << "active";       break;
-        case Inactive:      flot << "inactive";     break;
-        default:            flot << "erreur";       break;
+        case Initialisee:   flot << "i";        break;
+        case Active:        flot << "a";        break;
+        case Inactive:      flot << "x";        break;
+        default:            flot << "erreur";   break;
     }
     flot << endl;
-
-    if (formes.taille() == 0) {
-        flot << "Couche: vide" << endl;
-        return;
-    }
 
     formes.afficher(flot);
 }
