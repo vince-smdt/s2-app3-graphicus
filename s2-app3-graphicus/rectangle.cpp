@@ -9,14 +9,14 @@
 #include "rectangle.h"
 
 Rectangle::Rectangle(int x, int y, int l, int h) : Forme(x, y) {
-    _dimensions.x = l;
-    _dimensions.y = h;
+    _dimensions.x = (l <= 0) ? 0 : l;
+    _dimensions.y = (h <= 0) ? 0 : h;
 }
 
 Rectangle::~Rectangle() {}
 
 double Rectangle::aire() {
-    return _dimensions.x * _dimensions.y;
+    return _dimensions.x * (double)_dimensions.y;
 }
 
 void Rectangle::afficher(ostream &flot) {
