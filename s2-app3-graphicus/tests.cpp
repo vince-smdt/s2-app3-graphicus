@@ -69,16 +69,16 @@ void Tests::tests_unitaires_vecteur()
     cout << "Debut - tests_unitaires_vecteur" << endl;
 
     // Tests sur la classe Vecteur
-    Vecteur *vecteur = new Vecteur();
+    Vecteur<Forme> *vecteur = new Vecteur<Forme>();
     Forme *forme = creer_forme();
 
     if(vecteur->taille() != 0)
         cout << "Erreur: La taille par defaut devrait être de 0" << endl;
 
-    if(vecteur->ajouterForme(nullptr) != false)
+    if(vecteur->ajouter(nullptr) != false)
         cout << "Erreur: Lorsque l'on passe nullprt en argument ajouterForme devrait retourner false" << endl;
 
-    if(vecteur->ajouterForme(forme) != true)
+    if(vecteur->ajouter(forme) != true)
         cout << "Erreur: Lorsque l'on passe un Forme en argument ajouterForme devrait retourner true" << endl;
 
     if(vecteur->estVide() != false)
@@ -87,22 +87,22 @@ void Tests::tests_unitaires_vecteur()
     if(vecteur->taille() != 1)
         cout << "Erreur: Après avoir ajoute une forme la taille devrait être de 1" << endl;
 
-     if(vecteur->obtenirForme(-2) != nullptr) 
+     if(vecteur->obtenir(-2) != nullptr) 
         cout << "Erreur: Lorsque l'on passe un nombre plus petit que 0 en argument obtenirForme devrait retourner nullptr" << endl;
 
-    if(vecteur->obtenirForme(1) != nullptr) 
+    if(vecteur->obtenir(1) != nullptr) 
         cout << "Erreur: Lorsque l'on passe un nombre plus grand ou egale à la taille en argument obtenirForme devrait retourner nullptr" << endl;
     
-    if(vecteur->obtenirForme(0) != forme) 
+    if(vecteur->obtenir(0) != forme) 
         cout << "Erreur: Lorsque l'on passe un nombre plus grand ou egale à 0 et plus petit que la taille en argument obtenirForme devrait retourner la forme" << endl;
 
-    if(vecteur->retirerForme(-2) != nullptr) 
+    if(vecteur->retirer(-2) != nullptr) 
         cout << "Erreur: Lorsque l'on passe un nombre plus petit que 0 en argument retirerForme devrait retourner nullptr" << endl;
 
-    if(vecteur->retirerForme(1) != nullptr) 
+    if(vecteur->retirer(1) != nullptr) 
         cout << "Erreur: Lorsque l'on passe un nombre plus grand ou egale à la taille en argument retirerForme devrait retourner nullptr" << endl;
     
-    if(vecteur->retirerForme(0) != forme) 
+    if(vecteur->retirer(0) != forme) 
         cout << "Erreur: Lorsque l'on passe un nombre plus grand ou egale à 0 et plus petit que la taille en argument retirerForme devrait retourner la forme" << endl;
 
     if(vecteur->taille() != 0)
@@ -111,9 +111,9 @@ void Tests::tests_unitaires_vecteur()
      if(vecteur->estVide() != true)
         cout << "Erreur: Après avoir retire une forme la taille devrait être de 0" << endl;    
 
-    vecteur->ajouterForme(creer_forme());
-    vecteur->ajouterForme(creer_forme());
-    vecteur->ajouterForme(creer_forme());
+    vecteur->ajouter(creer_forme());
+    vecteur->ajouter(creer_forme());
+    vecteur->ajouter(creer_forme());
     vecteur->vider();
     if(vecteur->estVide() != true)
         cout << "Erreur: Après avoir appele vider() il reste des elements dans le tablau de forme" << endl;    
@@ -325,7 +325,7 @@ void Tests::tests_validation() {
     cout << endl;
 
     cout << "Etape 8" << endl;
-    cout << "   Afficher l’aire du canevas " << endl;
+    cout << "   Afficher l`aire du canevas " << endl;
     cout << "   Aire du canevas: "  + to_string(canevas->aire()) << endl;
     cout << endl;
 

@@ -1,0 +1,93 @@
+﻿  canevas.cpp
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(14,5): error C2760: erreur de syntaxe : jeton inattendu 'identificateur', attendu 'déclaration'
+  carre.cpp
+  cercle.cpp
+  couche.cpp
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(14,5): error C2760: erreur de syntaxe : jeton inattendu 'identificateur', attendu 'déclaration'
+  forme.cpp
+  rectangle.cpp
+  s2-app3-graphicus.cpp
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(14,5): error C2760: erreur de syntaxe : jeton inattendu 'identificateur', attendu 'déclaration'
+  tests.cpp
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(14,5): error C2760: erreur de syntaxe : jeton inattendu 'identificateur', attendu 'déclaration'
+  vecteur.cpp
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(12,8): error C2988: impossible de reconnaître la définition/déclaration de modèle
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(12,8): error C2143: erreur de syntaxe : absence de ';' avant '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(12,8): error C2059: erreur de syntaxe : '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(12,13): error C2039: 'Vecteur' n'est pas membre de '`global namespace''
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(12,1): error C2143: erreur de syntaxe : absence de ';' avant '{'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(12,1): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(20,8): error C2988: impossible de reconnaître la définition/déclaration de modèle
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(20,8): error C2143: erreur de syntaxe : absence de ';' avant '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(20,8): error C2059: erreur de syntaxe : '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(20,14): error C2523: '::~Vecteur' : balise destructeur non correcte
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(20,14): error C2039: 'Vecteur' n'est pas membre de '`global namespace''
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(20,1): error C2143: erreur de syntaxe : absence de ';' avant '{'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(20,1): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(25,12): error C2988: impossible de reconnaître la définition/déclaration de modèle
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(25,12): error C2143: erreur de syntaxe : absence de ';' avant '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(25,12): error C2059: erreur de syntaxe : '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(25,17): error C2039: 'capacite' n'est pas membre de '`global namespace''
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(25,1): error C2143: erreur de syntaxe : absence de ';' avant '{'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(25,1): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(30,13): error C2988: impossible de reconnaître la définition/déclaration de modèle
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(30,13): error C2143: erreur de syntaxe : absence de ';' avant '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(30,6): error C2182: 'Vecteur' : utilisation non conforme du type 'void'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(30,6): error C2374: 'Vecteur' : redéfinition ; initialisation multiple
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(30,13): error C2059: erreur de syntaxe : '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(30,18): error C2039: 'doublerCapacite' n'est pas membre de '`global namespace''
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(30,36): error C2143: erreur de syntaxe : absence de ';' avant '{'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(30,36): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(43,13): error C2988: impossible de reconnaître la définition/déclaration de modèle
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(43,13): error C2143: erreur de syntaxe : absence de ';' avant '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(43,6): error C2182: 'Vecteur' : utilisation non conforme du type 'void'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(43,6): error C2374: 'Vecteur' : redéfinition ; initialisation multiple
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(43,13): error C2059: erreur de syntaxe : '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(43,18): error C2039: 'vider' n'est pas membre de '`global namespace''
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(43,26): error C2143: erreur de syntaxe : absence de ';' avant '{'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(43,26): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(53,13): error C2988: impossible de reconnaître la définition/déclaration de modèle
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(53,13): error C2143: erreur de syntaxe : absence de ';' avant '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(53,6): error C2182: 'Vecteur' : utilisation non conforme du type 'void'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(53,6): error C2374: 'Vecteur' : redéfinition ; initialisation multiple
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(53,13): error C2059: erreur de syntaxe : '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(53,18): error C2039: 'afficher' n'est pas membre de '`global namespace''
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(53,42): error C2143: erreur de syntaxe : absence de ';' avant '{'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(53,42): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(59,12): error C2988: impossible de reconnaître la définition/déclaration de modèle
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(59,12): error C2143: erreur de syntaxe : absence de ';' avant '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(59,5): error C2374: 'Vecteur' : redéfinition ; initialisation multiple
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(59,12): error C2059: erreur de syntaxe : '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(59,17): error C2039: 'taille' n'est pas membre de '`global namespace''
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(59,26): error C2143: erreur de syntaxe : absence de ';' avant '{'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(59,26): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(64,13): error C2988: impossible de reconnaître la définition/déclaration de modèle
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(64,13): error C2143: erreur de syntaxe : absence de ';' avant '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(64,6): error C2371: 'Vecteur' : redéfinition ; types de base différents
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(25): message : voir la déclaration de 'Vecteur'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(64,13): error C2059: erreur de syntaxe : '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(64,18): error C2039: 'estVide' n'est pas membre de '`global namespace''
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(64,28): error C2143: erreur de syntaxe : absence de ';' avant '{'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(64,28): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(69,13): error C2988: impossible de reconnaître la définition/déclaration de modèle
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(69,13): error C2143: erreur de syntaxe : absence de ';' avant '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(69,6): error C2371: 'Vecteur' : redéfinition ; types de base différents
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(25): message : voir la déclaration de 'Vecteur'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(69,13): error C2059: erreur de syntaxe : '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(69,18): error C2039: 'ajouter' n'est pas membre de '`global namespace''
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(69,38): error C2143: erreur de syntaxe : absence de ';' avant '{'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(69,38): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(84,11): error C2988: impossible de reconnaître la définition/déclaration de modèle
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(84,11): error C2143: erreur de syntaxe : absence de ';' avant '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(84,4): error C2040: 'Vecteur' : les niveaux d'indirection de 'T *' et de 'int' sont différents
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(84,11): error C2059: erreur de syntaxe : '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(84,16): error C2039: 'retirer' n'est pas membre de '`global namespace''
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(84,35): error C2143: erreur de syntaxe : absence de ';' avant '{'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(84,35): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(99,11): error C2988: impossible de reconnaître la définition/déclaration de modèle
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(99,11): error C2143: erreur de syntaxe : absence de ';' avant '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(99,4): error C2040: 'Vecteur' : les niveaux d'indirection de 'T *' et de 'int' sont différents
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(99,11): error C2059: erreur de syntaxe : '<'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(99,16): error C2039: 'obtenir' n'est pas membre de '`global namespace''
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(99,35): error C2143: erreur de syntaxe : absence de ';' avant '{'
+C:\UDS\S2\App3\s2-app3-graphicus\s2-app3-graphicus\vecteur.cpp(99,35): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)

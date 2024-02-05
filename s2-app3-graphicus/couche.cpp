@@ -20,7 +20,7 @@ bool Couche::ajouterForme(Forme *forme) {
     if (etat != Active)
         return false;
 
-    return formes.ajouterForme(forme);
+    return formes.ajouter(forme);
 }
 
 bool Couche::translater(int deltaX, int deltaY) {
@@ -28,7 +28,7 @@ bool Couche::translater(int deltaX, int deltaY) {
         return false;
 
     for (int i = 0; i < formes.taille(); i++)
-        formes.obtenirForme(i)->translater(deltaX, deltaY);
+        formes.obtenir(i)->translater(deltaX, deltaY);
 
     return true;
 }
@@ -61,7 +61,7 @@ double Couche::aireTotal() {
     double somme = 0;
 
     for (int i = 0; i < formes.taille(); i++)
-        somme += formes.obtenirForme(i)->aire();
+        somme += formes.obtenir(i)->aire();
 
     return somme;
 }
@@ -88,9 +88,9 @@ Forme *Couche::retirerForme(int index) {
     if (etat != Active)
         return nullptr;
 
-    return formes.retirerForme(index);
+    return formes.retirer(index);
 }
 
 Forme *Couche::obtenirForme(int index) {
-    return formes.obtenirForme(index);
+    return formes.obtenir(index);
 }

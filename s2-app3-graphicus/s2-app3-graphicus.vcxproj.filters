@@ -72,4 +72,7 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="s2-app3-graphicus.pro" />
+  </ItemGroup>
 </Project>

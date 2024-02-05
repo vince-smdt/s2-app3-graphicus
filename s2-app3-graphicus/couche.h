@@ -39,7 +39,7 @@ public:
     Forme *retirerForme(int index);
     Forme *obtenirForme(int index);
 private:
-    Vecteur formes;
+    Vecteur<Forme> formes;
     Etat etat;
 };
 
