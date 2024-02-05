@@ -9,7 +9,7 @@
 #include "cercle.h"
 
 Cercle::Cercle(int x, int y, int r) : Forme(x, y) {
-    _rayon = r;
+    _rayon = (r <= 0) ? 0 : r;
 }
 
 Cercle::~Cercle() {}
