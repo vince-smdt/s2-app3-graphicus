@@ -48,7 +48,7 @@ private:
     T **_elements;
     int _taille;
     int _capacite;
-    int _actif;
+    int _actif = -1;
 };
 
 template <class T>
@@ -62,24 +62,24 @@ void Vecteur<T>::operator[](int index) {
 }
 
 template <class T>
-void operator<<(ostream& out, T _elements) {
-    afficher(cout);
+void operator<<(Vecteur<T> v, T _elements) {
+    v.afficher(cout);
 }
 
 template <class T>
 void Vecteur<T>::operator++(int i) {
     // Passe à l'item suivant de vecteur.
-    if (_actif == nullptr)
+    if (_actif == -1)
         _actif = 0;
     else
         _actif++;
 }
 
 template <class T>
-void Vecteur<T>::operator++(int i) {
+void Vecteur<T>::operator--(int i) {
     // Passe à l'item précédent de vecteur.
     if (_actif == 0)
-        _actif = nullptr;
+        _actif = -1;
     else
         _actif--;
 }
@@ -132,7 +132,7 @@ void Vecteur<T>::vider() {
     _taille = 0;
     _capacite = CAPACITE_DEPART;
     _elements = new T * [_capacite];
-    _actif = nullptr;
+    _actif = -1;
 }
 
 template <class T>
