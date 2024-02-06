@@ -174,17 +174,12 @@ bool Canevas::translater(int deltaX, int deltaY)
 
 void Canevas::afficher(ostream& s)
 {
-<<<<<<< HEAD
     s << _couches;
 }
 
 ostream& operator<<(ostream& s, Canevas& canevas) {
     canevas.afficher(s);
     return s;
-=======
-	for (int i = 0; i < _couches.taille(); i++)
-		_couches[i].afficher(s);
->>>>>>> 1dab784bba9f401aacb833509f3fcd71caca98ca
 }
 
 void Canevas::modePile() {

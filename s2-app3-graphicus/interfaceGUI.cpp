@@ -29,6 +29,7 @@ void InterfaceGUI::rafraichir() {
 }
 
 bool InterfaceGUI::ouvrirFichier(const char* nom) {
+	bool premiereCouche = false;
 	_canevas.reinitialiser();
 
 	std::ifstream fichier(nom);
@@ -40,7 +41,11 @@ bool InterfaceGUI::ouvrirFichier(const char* nom) {
 			switch (ligne[0])
 			{
 			case *"L":
-				_canevas.ajouterCouche();
+				if (premiereCouche == false)
+					premiereCouche = true;
+				else
+					_canevas.ajouterCouche();
+
 				switch (ligne[2])
 				{
 				case * "a":
