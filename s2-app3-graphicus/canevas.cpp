@@ -119,6 +119,14 @@ Couche* Canevas::obtenirCoucheActive() {
     return &_couches[_indexCoucheActive];
 }
 
+int Canevas::indexCoucheActive() {
+    return _indexCoucheActive;
+}
+
+int Canevas::nbCouches() {
+    return _couches.taille();
+}
+
 bool Canevas::ajouterForme(Forme *p_forme)
 {
     if (_indexCoucheActive < 0 || _indexCoucheActive >= _couches.taille())
@@ -133,6 +141,15 @@ bool Canevas::retirerForme(int index)
         return false;
 
     return _couches[_indexCoucheActive].retirerForme(index);
+}
+
+int Canevas::nbFormes() {
+    int somme = 0;
+
+    for (int i = 0; i < _couches.taille(); i++)
+        somme += _couches[i].nbFormes();
+
+    return somme;
 }
 
 double Canevas::aire()

@@ -31,12 +31,15 @@ public:
     bool reinitialiser();
     bool changerEtat(Etat e);
     Etat getEtat();
+    const char* getEtatCStr();
 
     bool prochaineForme();
     bool precedenteForme();
     bool premiereForme();
     bool derniereForme();
     Forme* obtenirFormeActive();
+    int obtenirIndexFormeActive();
+    int nbFormes();
 
     double aireTotal();
 

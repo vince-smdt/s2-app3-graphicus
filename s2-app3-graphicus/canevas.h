@@ -35,9 +35,12 @@ public:
     bool premiereCouche();
     int derniereCouche();
     Couche* obtenirCoucheActive();
+    int indexCoucheActive();
+    int nbCouches();
 
     bool ajouterForme(Forme *p_forme);
     bool retirerForme(int index);
+    int nbFormes();
 
     double aire();
     bool translater(int deltaX, int deltaY);

@@ -57,6 +57,15 @@ Couche::Etat Couche::getEtat() {
     return etat;
 }
 
+const char* Couche::getEtatCStr() {
+    switch (etat) {
+        case Etat::Initialisee: return "i";        break;
+        case Etat::Active:      return "a";        break;
+        case Etat::Inactive:    return "x";        break;
+    }
+    return "erreur";
+}
+
 bool Couche::prochaineForme() {
     if (formes.taille() == 0)
         return false;
@@ -99,6 +108,14 @@ Forme* Couche::obtenirFormeActive() {
     return &formes[_indexFormeActive];
 }
 
+int Couche::obtenirIndexFormeActive() {
+    return _indexFormeActive;
+}
+
+int Couche::nbFormes() {
+    return formes.taille();
+}
+
 double Couche::aireTotal() {
     if (etat == Etat::Initialisee)
         return 0;
@@ -112,15 +129,7 @@ double Couche::aireTotal() {
 }
 
 void Couche::afficher(ostream &flot) {
-    flot << "L ";
-    switch (etat) {
-        case Etat::Initialisee:     flot << "i";        break;
-        case Etat::Active:          flot << "a";        break;
-        case Etat::Inactive:        flot << "x";        break;
-        default:                    flot << "erreur";   break;
-    }
-    flot << endl;
-
+    flot << "L " << getEtatCStr() << endl;
     formes.afficher(flot);
 }
 
