@@ -6,21 +6,61 @@
 ********/
 
 #include "interfaceGUI.h"
-#include <iostream>
-#include <fstream>
-#include <string>
+#include <vector>
 
 InterfaceGUI::InterfaceGUI(const char* titre) : GraphicusGUI(titre) {}
+
+std::string _mesMesures[5];
+
+
+std::string* const separer(string entrer) {
+	std::istringstream flux(entrer);
+	std::string mesure;
+	int i = 0;
+	while (flux >> mesure) {
+		_mesMesures[i] = mesure;
+		i++;
+	}
+	return _mesMesures;
+}
 
 bool InterfaceGUI::ouvrirFichier(const char* nom) {
 	std::ifstream fichier(nom);
 	if (fichier.is_open()) {
+		std::string* mesMesures;
 		std::string ligne;
 
 		while (std::getline(fichier, ligne)) {
-
+			switch (ligne[0])
+			{
+			case *"L":
+				_canevas.ajouterCouche();
+				switch (ligne[2])
+				{
+				case * "a":
+					_canevas.activerCouche(_canevas.derniereCouche());
+					break;
+				case * "x":
+					_canevas.desactiverCouche(_canevas.derniereCouche());
+					break;
+				}
+				break;
+			case *"R":
+				mesMesures = separer(ligne);
+				_canevas.ajouterForme(new Rectangle(std::stoi(mesMesures[1]), std::stoi(mesMesures[2]), std::stoi(mesMesures[3]), std::stoi(mesMesures[4])));
+				break;
+			case * "K":
+				mesMesures = separer(ligne);
+				_canevas.ajouterForme(new Carre(std::stoi(mesMesures[1]), std::stoi(mesMesures[2]), std::stoi(mesMesures[3])));
+				break;
+			case * "C":
+				mesMesures = separer(ligne);
+				_canevas.ajouterForme(new Cercle(std::stoi(mesMesures[1]), std::stoi(mesMesures[2]), std::stoi(mesMesures[3])));
+				break;
+			default:
+				return false;
+			}
 		}
-
 		fichier.close();
 	} 
 	else {

@@ -33,7 +33,7 @@ public:
     bool prochaineCouche();
     bool precedenteCouche();
     bool premiereCouche();
-    bool derniereCouche();
+    int derniereCouche();
     Couche* obtenirCoucheActive();
 
     bool ajouterForme(Forme *p_forme);

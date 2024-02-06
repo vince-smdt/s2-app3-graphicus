@@ -86,7 +86,7 @@ bool Canevas::desactiverCouche(int index)
     if (index == _indexCoucheActive)
         _indexCoucheActive = -1;
 
-    return _couches[index].changerEtat(Couche::Etat::Active);
+    return _couches[index].changerEtat(Couche::Etat::Inactive);
 }
 
 bool Canevas::prochaineCouche() {
@@ -111,8 +111,8 @@ bool Canevas::premiereCouche() {
     return activerCouche(0);
 }
 
-bool Canevas::derniereCouche() {
-    return activerCouche(_couches.taille() - 1);
+int Canevas::derniereCouche() {
+    return _couches.taille() - 1;
 }
 
 Couche* Canevas::obtenirCoucheActive() {

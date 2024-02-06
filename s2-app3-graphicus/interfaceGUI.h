@@ -14,6 +14,9 @@
 #include "cercle.h"
 #include "graphicusGUI.h"
 #include <sstream>
+#include <iostream>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
