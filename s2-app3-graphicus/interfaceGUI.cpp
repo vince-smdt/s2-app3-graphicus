@@ -51,7 +51,7 @@ bool InterfaceGUI::ouvrirFichier(const char* nom) {
 
 bool InterfaceGUI::sauvegarderFichier(const char* nom) { return 0; }
 
-void InterfaceGUI::reinitialiserCanevas() { _canevas.reinitialiser();  }
+void InterfaceGUI::reinitialiserCanevas() { _canevas.reinitialiser(); }
 
 void InterfaceGUI::coucheAjouter() {}
 
@@ -59,28 +59,93 @@ void InterfaceGUI::coucheRetirer() {}
 
 void InterfaceGUI::coucheTranslater(int deltaX, int deltaY) {}
 
-void InterfaceGUI::ajouterCerclee(int x, int y, int rayon) {}
+void InterfaceGUI::ajouterCercle(int x, int y, int rayon) {
+	if (_canevas.ajouterForme(new Cercle(x, y, rayon)) == false) {
+		messageErreur("Erreur lors de la creation d'un cercle!");
+		return;
+	}
 
-void InterfaceGUI::ajouterRectangle(int x, int y, int longueur, int largeur) {}
+	Forme* forme = _canevas.obtenirCoucheActive()->obtenirFormeActive();
+	if (forme == nullptr) {
+		messageErreur("Le cercle cree n'a pas pu etre recupere!");
+		return;
+	}
 
-void InterfaceGUI::ajouterCarre(int x, int y, int cote) {}
+	ostringstream ss;
+	_canevas.afficher(ss);
+	dessiner(ss.str().c_str());
+}
+
+void InterfaceGUI::ajouterRectangle(int x, int y, int longueur, int largeur) {
+	if (_canevas.ajouterForme(new Rectangle(x, y, longueur, largeur)) == false)
+		messageErreur("Erreur lors de la creation d'un rectangle!");
+
+	Forme* forme = _canevas.obtenirCoucheActive()->obtenirFormeActive();
+	if (forme == nullptr) {
+		messageErreur("Le rectangle cree n'a pas pu etre recupere!");
+		return;
+	}
+
+	ostringstream ss;
+	_canevas.afficher(ss);
+	dessiner(ss.str().c_str());
+}
+
+void InterfaceGUI::ajouterCarre(int x, int y, int cote) {
+	if (_canevas.ajouterForme(new Carre(x, y, cote)) == false)
+		messageErreur("Erreur lors de la creation d'un carre!");
+
+	Forme* forme = _canevas.obtenirCoucheActive()->obtenirFormeActive();
+	if (forme == nullptr) {
+		messageErreur("Le carre cree n'a pas pu etre recupere!");
+		return;
+	}
+
+	ostringstream ss;
+	_canevas.afficher(ss);
+	dessiner(ss.str().c_str());
+}
 
 void InterfaceGUI::retirerForme() {}
 
 void InterfaceGUI::modePileChange(bool mode) {}
 
-void InterfaceGUI::couchePremiere() {}
+void InterfaceGUI::couchePremiere() { 
+	if (_canevas.premiereCouche() == false)
+		messageErreur("Erreur lors de la selection de la premiere couche!");
+}
 
-void InterfaceGUI::couchePrecedente() {}
+void InterfaceGUI::couchePrecedente() {
+	if (_canevas.precedenteCouche() == false)
+		messageErreur("Erreur lors de la selection de la couche precedente!");
+}
 
-void InterfaceGUI::coucheSuivante() {}
+void InterfaceGUI::coucheSuivante() {
+	if (_canevas.prochaineCouche() == false)
+		messageErreur("Erreur lors de la selection de la couche suivante!");
+}
 
-void InterfaceGUI::coucheDerniere() {}
+void InterfaceGUI::coucheDerniere() { 
+	if (_canevas.derniereCouche() == false)
+		messageErreur("Erreur lors de la selection de la derniere couche!");
+}
 
-void InterfaceGUI::formePremiere() {}
+void InterfaceGUI::formePremiere() {
+	if (_canevas.obtenirCoucheActive()->premiereForme() == false)
+		messageErreur("Erreur lors de la selection de la premiere forme de la couche!");
+}
 
-void InterfaceGUI::formePrecedente() {}
+void InterfaceGUI::formePrecedente() {
+	if (_canevas.obtenirCoucheActive()->precedenteForme() == false)
+		messageErreur("Erreur lors de la selection de la forme precedente de la couche!");
+}
 
-void InterfaceGUI::formeSuivante() {}
+void InterfaceGUI::formeSuivante() {
+	if (_canevas.obtenirCoucheActive()->prochaineForme() == false)
+		messageErreur("Erreur lors de la selection de la forme suivante de la couche!");
+}
 
-void InterfaceGUI::formeDerniere() {}
+void InterfaceGUI::formeDerniere() {
+	if (_canevas.obtenirCoucheActive()->derniereForme() == false)
+		messageErreur("Erreur lors de la selection de la derniere forem de la couche!");
+}

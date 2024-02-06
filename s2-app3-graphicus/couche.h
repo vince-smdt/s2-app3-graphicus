@@ -3,7 +3,7 @@
  * Auteurs: C.-A. Brunet
  * Date: 04 janvier 2024 (creation)
  * Modifie par : Vincent Simard-Schmidt (simv2104) & Kevin Gauvin (gauk1703)
- * Date : 05 janvier 2024
+ * Date : 05 fevrier 2024
  * Description: Declaration de la classe pour une couche dans un
  *    canevas. La classe Couche gere un vecteur de pointeur de formes
  *    geometriques en accord avec les specifications de Graphicus.
@@ -17,7 +17,7 @@
 
 class Couche {
 public:
-    enum Etat {
+    enum class Etat {
         Initialisee,
         Active,
         Inactive
@@ -32,6 +32,12 @@ public:
     bool changerEtat(Etat e);
     Etat getEtat();
 
+    bool prochaineForme();
+    bool precedenteForme();
+    bool premiereForme();
+    bool derniereForme();
+    Forme* obtenirFormeActive();
+
     double aireTotal();
 
     void afficher(ostream &flot);
@@ -41,6 +47,7 @@ public:
 private:
     Vecteur<Forme> formes;
     Etat etat;
+    int _indexFormeActive;
 };
 
 #endif

@@ -141,24 +141,24 @@ void Tests::tests_unitaires_couche()
     Couche *couche = new Couche();
     Forme *forme = creer_forme();
 
-    if(couche->getEtat() != Couche::Initialisee)
+    if(couche->getEtat() != Couche::Etat::Initialisee)
         cout << "Erreur: L'etat de base devrait être 'Initialisee'" << endl;
 
     if(couche->aireTotal() != 0)
         cout << "Erreur: Lorsque l'etat est Initialisee airTotal devrait retourner 0" << endl;  
 
-    couche->changerEtat(Couche::Active);
-    if(couche->getEtat() != Couche::Active)
+    couche->changerEtat(Couche::Etat::Active);
+    if(couche->getEtat() != Couche::Etat::Active)
             cout << "Erreur: L'etat devrait être 'Active'" << endl;
 
-    couche->changerEtat(Couche::Inactive);
-    if(couche->getEtat() != Couche::Inactive)
+    couche->changerEtat(Couche::Etat::Inactive);
+    if(couche->getEtat() != Couche::Etat::Inactive)
             cout << "Erreur: L'etat devrait être 'Inactive'" << endl; 
 
-    if(couche->changerEtat(Couche::Initialisee) != false)
+    if(couche->changerEtat(Couche::Etat::Initialisee) != false)
             cout << "Erreur: L'etat 'Initialisee' ne peut pas être changer avec changerEtat" << endl;
 
-    couche->changerEtat(Couche::Active);
+    couche->changerEtat(Couche::Etat::Active);
     if(couche->translater(4, 4) != true)
         cout << "Erreur: Lorsque la couche est Active et que l'on appel translater() le methode devrait retourner true" << endl;
         
@@ -171,7 +171,7 @@ void Tests::tests_unitaires_couche()
     if(couche->aireTotal() == 0)
         cout << "Erreur: Lorsque l'etat est Active airTotal devrait retourner l'air et non 0" << endl;
 
-    couche->changerEtat(Couche::Inactive);
+    couche->changerEtat(Couche::Etat::Inactive);
     if(couche->ajouterForme(forme) != false)
         cout << "Erreur: Lorsque la couche est Inactive et que l'on appel ajouterForme() le methode devrait retourner false" << endl;
 
@@ -181,7 +181,7 @@ void Tests::tests_unitaires_couche()
     if(couche->retirerForme(0) != nullptr)
          cout << "Erreur: Lorsque l'on retire une forme d'une couche et que l'etat est different de Active retirerForme() devrait retourner nullptr" << endl;
 
-    couche->changerEtat(Couche::Active);
+    couche->changerEtat(Couche::Etat::Active);
     if(couche->retirerForme(0) != forme)
          cout << "Erreur: Lorsque l'on retire une forme d'une couche et que l'etat est Active retirerForme() devrait retourner la forme retirer" << endl;
 

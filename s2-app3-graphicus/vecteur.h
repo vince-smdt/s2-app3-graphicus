@@ -26,7 +26,7 @@ public:
     ~Vecteur();
 
     void operator+=(T donnee);
-    void operator[](int index);
+    T& operator[](int index);
     void operator++(int i);
     void operator--(int i);
 
@@ -57,8 +57,8 @@ void Vecteur<T>::operator+=(T donnee) {
 }
 
 template <class T>
-void Vecteur<T>::operator[](int index) {
-    obtenir(index);
+T& Vecteur<T>::operator[](int index) {
+    return *obtenir(index);
 }
 
 template <class T>
@@ -68,7 +68,7 @@ void operator<<(Vecteur<T> v, T _elements) {
 
 template <class T>
 void Vecteur<T>::operator++(int i) {
-    // Passe à l'item suivant de vecteur.
+    // Passe a l'item suivant de vecteur.
     if (_actif == -1)
         _actif = 0;
     else
@@ -77,7 +77,7 @@ void Vecteur<T>::operator++(int i) {
 
 template <class T>
 void Vecteur<T>::operator--(int i) {
-    // Passe à l'item précédent de vecteur.
+    // Passe a l'item precedent de vecteur.
     if (_actif == 0)
         _actif = -1;
     else
