@@ -22,170 +22,190 @@ const int CAPACITE_DEPART = 2;
 template <class T>
 class Vecteur {
 public:
-    Vecteur();
-    ~Vecteur();
+	Vecteur();
+	~Vecteur();
 
-    void operator+=(T donnee);
-    T& operator[](int index);
-    void operator++(int i);
-    void operator--(int i);
+	void operator+=(T donnee);
+	T& operator[](int index);
+	void operator++(int i);
+	void operator--(int i);
 
 
-    int capacite();
-    void doublerCapacite();
-    void vider();
-    void afficher(ostream &flot);
+	int capacite();
+	void doublerCapacite();
+	void vider();
+	void afficher(ostream& flot);
+	void modePile();
 
-    int taille();
+	int taille();
 
-    bool estVide();
-    bool ajouter(T* element);
+	bool estVide();
+	bool ajouter(T* element);
 
-    T *retirer(int index);
-    T *obtenir(int index);
+	T* retirer(int index);
+	T* obtenir(int index);
 
 private:
-    T **_elements;
-    int _taille;
-    int _capacite;
-    int _actif = -1;
+	T** _elements;
+	int _taille;
+	int _capacite;
+	int _actif = -1;
 };
 
 template <class T>
 void Vecteur<T>::operator+=(T donnee) {
-    ajouter(donnee);
+	ajouter(donnee);
 }
 
 template <class T>
 T& Vecteur<T>::operator[](int index) {
-    return *obtenir(index);
+	return *obtenir(index);
 }
 
 template <class T>
 void operator<<(Vecteur<T> v, T _elements) {
-    v.afficher(cout);
+	v.afficher(cout);
 }
 
 template <class T>
 void Vecteur<T>::operator++(int i) {
-    // Passe a l'item suivant de vecteur.
-    if (_actif == -1)
-        _actif = 0;
-    else
-        _actif++;
+	// Passe a l'item suivant de vecteur.
+	if (_actif == -1)
+		_actif = 0;
+	else
+		_actif++;
 }
 
 template <class T>
 void Vecteur<T>::operator--(int i) {
-    // Passe a l'item precedent de vecteur.
-    if (_actif == 0)
-        _actif = -1;
-    else
-        _actif--;
+	// Passe a l'item precedent de vecteur.
+	if (_actif == 0)
+		_actif = -1;
+	else
+		_actif--;
 }
 
 
 
 template <class T>
 std::istream& operator >> (std::istream& input, Vecteur<T>& v) {
-    // TODO si il a lieu
+	// TODO si il a lieu
 }
 
 
 
 template <class T>
 Vecteur<T>::Vecteur() {
-    _taille = 0;
-    _capacite = CAPACITE_DEPART;
-    _elements = new T * [_capacite];
+	_taille = 0;
+	_capacite = CAPACITE_DEPART;
+	_elements = new T * [_capacite];
 }
 
 template <class T>
 Vecteur<T>::~Vecteur() {
-    vider();
+	vider();
+}
+
+template <class T>
+void Vecteur<T>::modePile() {
+	T** elementsTemp = new T * [_capacite];
+	int tailles = taille();
+	for (int i = 0; i < tailles; i++)
+	{
+		elementsTemp[i] = _elements[i];
+	}
+	vider();
+	
+	int ii = 0;
+	for (int i = tailles - 1; i >= 0; i--)
+	{
+		ajouter(elementsTemp[i]);
+		ii++;
+	}
+	delete[] elementsTemp;
 }
 
 template <class T>
 int Vecteur<T>::capacite() {
-    return _capacite;
+	return _capacite;
 }
 
 template <class T>
 void Vecteur<T>::doublerCapacite() {
-    _capacite *= 2;
+	_capacite *= 2;
 
-    T** tempElements = _elements;
-    _elements = new T * [_capacite];
+	T** tempElements = _elements;
+	_elements = new T * [_capacite];
 
-    for (int i = 0; i < _taille; i++)
-        _elements[i] = tempElements[i];
+	for (int i = 0; i < _taille; i++)
+		_elements[i] = tempElements[i];
 
-    delete[] tempElements;
+	delete[] tempElements;
 }
 
 template <class T>
 void Vecteur<T>::vider() {
-    // Vecteur ne doit plus delete
-    //for (int i = 0; i < _taille; i++)
-    //    delete _elements[i];
+	// Vecteur ne doit plus delete
+	//for (int i = 0; i < _taille; i++)
+	//    delete _elements[i];
 
-    _taille = 0;
-    _capacite = CAPACITE_DEPART;
-    _elements = new T * [_capacite];
-    _actif = -1;
+	_taille = 0;
+	_capacite = CAPACITE_DEPART;
+	_elements = new T * [_capacite];
+	_actif = -1;
 }
 
 template <class T>
 void Vecteur<T>::afficher(ostream& flot) {
-    for (int i = 0; i < _taille; i++)
-        _elements[i]->afficher(flot);
+	for (int i = 0; i < _taille; i++)
+		_elements[i]->afficher(flot);
 }
 
 template <class T>
 int Vecteur<T>::taille() {
-    return _taille;
+	return _taille;
 }
 
 template <class T>
 bool Vecteur<T>::estVide() {
-    return _taille == 0;
+	return _taille == 0;
 }
 
 template <class T>
 bool Vecteur<T>::ajouter(T* element) {
-    if (element == nullptr)
-        return false;
+	if (element == nullptr)
+		return false;
 
-    if (_taille + 1 > _capacite)
-        doublerCapacite();
+	if (_taille + 1 > _capacite)
+		doublerCapacite();
 
-    _elements[_taille] = element;    
-    _taille++;
+	_elements[_taille] = element;
+	_taille++;
 
-    return true;
+	return true;
 }
 
 template <class T>
 T* Vecteur<T>::retirer(int index) {
-    if (index < 0 || index >= _taille)
-        return nullptr;
+	if (index < 0 || index >= _taille)
+		return nullptr;
 
-    T* elementRetiree = _elements[index];
+	T* elementRetiree = _elements[index];
 
-    for (int i = index; i < _taille - 1; i++)
-        _elements[i] = _elements[i + 1];
+	for (int i = index; i < _taille - 1; i++)
+		_elements[i] = _elements[i + 1];
 
-    _taille--;
+	_taille--;
 
-    return elementRetiree;
+	return elementRetiree;
 }
 
 template <class T>
 T* Vecteur<T>::obtenir(int index) {
-    if (index < 0 || index >= _taille)
-        return nullptr;
+	if (index < 0 || index >= _taille)
+		return nullptr;
 
-    return _elements[index];
+	return _elements[index];
 }
 
 #endif

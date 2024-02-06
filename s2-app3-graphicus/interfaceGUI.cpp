@@ -147,9 +147,15 @@ void InterfaceGUI::ajouterCarre(int x, int y, int cote) {
 	rafraichir();
 }
 
-void InterfaceGUI::retirerForme() { }
+void InterfaceGUI::retirerForme() {
+	_canevas.retirerForme(_canevas.obtenirCoucheActive()->obtenirIndexFormeActive());
+	rafraichir();
+}
 
-void InterfaceGUI::modePileChange(bool mode) {}
+void InterfaceGUI::modePileChange(bool mode) {
+	_canevas.modePile();
+	rafraichir();
+}
 
 void InterfaceGUI::couchePremiere() { 
 	if (_canevas.premiereCouche() == false)
