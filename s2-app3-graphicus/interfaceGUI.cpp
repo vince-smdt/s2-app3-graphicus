@@ -6,10 +6,48 @@
 ********/
 
 #include "interfaceGUI.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 
 InterfaceGUI::InterfaceGUI(const char* titre) : GraphicusGUI(titre) {}
 
-bool InterfaceGUI::ouvrirFichier(const char* nom) { return 0; }
+bool InterfaceGUI::ouvrirFichier(const char* nom) {
+	std::ifstream fichier(nom);
+	if (fichier.is_open()) {
+		std::string ligne;
+
+		while (std::getline(fichier, ligne)) {
+
+		}
+
+		fichier.close();
+	} 
+	else {
+		return false;
+	}
+
+	//int lenghtMax = 0;
+	//int lastSlash = 0;
+
+	//while (nom[lenghtMax] != '\0')
+	//	lenghtMax++;
+
+	//// Trouver où est la dernier /
+	//const char* temp = nom;
+	//for (int i = 0; i < lenghtMax; i++)
+	//	if (temp[i] == '\\' || temp[i] == '/') 
+	//		lastSlash = i + 1;
+
+	//// Changer contenu de nom
+	//nom = "";
+	//for (int i = lastSlash; i < lenghtMax; i++)
+	//	nom += temp[i];
+
+
+
+	return true;
+}
 
 bool InterfaceGUI::sauvegarderFichier(const char* nom) { return 0; }
 
