@@ -112,6 +112,10 @@ bool Canevas::derniereCouche() {
     return activerCouche(_couches.taille() - 1);
 }
 
+Couche* Canevas::obtenirCoucheActive() {
+    return &_couches[_indexCoucheActive];
+}
+
 bool Canevas::ajouterForme(Forme *p_forme)
 {
     if (_indexCoucheActive < 0 || _indexCoucheActive >= _couches.taille())

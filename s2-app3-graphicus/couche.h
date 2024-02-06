@@ -32,6 +32,11 @@ public:
     bool changerEtat(Etat e);
     Etat getEtat();
 
+    bool prochaineForme();
+    bool precedenteForme();
+    bool premiereForme();
+    bool derniereForme();
+
     double aireTotal();
 
     void afficher(ostream &flot);
@@ -41,6 +46,7 @@ public:
 private:
     Vecteur<Forme> formes;
     Etat etat;
+    int _indexFormeActive;
 };
 
 #endif

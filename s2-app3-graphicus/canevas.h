@@ -30,11 +30,11 @@ public:
     bool retirerCouche(int index);
     bool activerCouche(int index);
     bool desactiverCouche(int index);
-
     bool prochaineCouche();
     bool precedenteCouche();
     bool premiereCouche();
     bool derniereCouche();
+    Couche* obtenirCoucheActive();
 
     bool ajouterForme(Forme *p_forme);
     bool retirerForme(int index);

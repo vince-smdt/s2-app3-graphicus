@@ -12,6 +12,7 @@
 
 Couche::Couche() {
     etat = Etat::Initialisee;
+    _indexFormeActive = -1;
 }
 
 Couche::~Couche() {}
@@ -19,6 +20,8 @@ Couche::~Couche() {}
 bool Couche::ajouterForme(Forme *forme) {
     if (etat != Etat::Active)
         return false;
+
+    _indexFormeActive = formes.taille();
 
     return formes.ajouter(forme);
 }
@@ -52,6 +55,44 @@ bool Couche::changerEtat(Etat e) {
 
 Couche::Etat Couche::getEtat() {
     return etat;
+}
+
+bool Couche::prochaineForme() {
+    if (formes.taille() == 0)
+        return false;
+
+    if (++_indexFormeActive >= formes.taille())
+        _indexFormeActive = 0;
+
+    return true;
+}
+
+bool Couche::precedenteForme() {
+    if (formes.taille() == 0)
+        return false;
+
+    if (--_indexFormeActive < 0)
+        _indexFormeActive = formes.taille() - 1;
+
+    return true;
+}
+
+bool Couche::premiereForme() {
+    if (formes.taille() == 0)
+        return false;
+
+    _indexFormeActive = 0;
+
+    return true;
+}
+
+bool Couche::derniereForme() {
+    if (formes.taille() == 0)
+        return false;
+
+    _indexFormeActive = formes.taille() - 1;
+
+    return true;
 }
 
 double Couche::aireTotal() {

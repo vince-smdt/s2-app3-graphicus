@@ -31,18 +31,42 @@ void InterfaceGUI::retirerForme() {}
 
 void InterfaceGUI::modePileChange(bool mode) {}
 
-void InterfaceGUI::couchePremiere() { _canevas.premiereCouche(); }
+void InterfaceGUI::couchePremiere() { 
+	if (_canevas.premiereCouche() == false)
+		messageErreur("Erreur lors de la séléction de la première couche!");
+}
 
-void InterfaceGUI::couchePrecedente() { _canevas.precedenteCouche(); }
+void InterfaceGUI::couchePrecedente() {
+	if (_canevas.precedenteCouche() == false)
+		messageErreur("Erreur lors de la séléction de la couche précédente!");
+}
 
-void InterfaceGUI::coucheSuivante() { _canevas.prochaineCouche(); }
+void InterfaceGUI::coucheSuivante() {
+	if (_canevas.prochaineCouche() == false)
+		messageErreur("Erreur lors de la séléction de la couche suivante!");
+}
 
-void InterfaceGUI::coucheDerniere() { _canevas.derniereCouche(); }
+void InterfaceGUI::coucheDerniere() { 
+	if (_canevas.derniereCouche() == false)
+		messageErreur("Erreur lors de la séléction de la dernière couche!");
+}
 
-void InterfaceGUI::formePremiere() {}
+void InterfaceGUI::formePremiere() {
+	if (_canevas.obtenirCoucheActive()->premiereForme() == false)
+		messageErreur("Erreur lors de la séléction de la premiere forme de la couche!");
+}
 
-void InterfaceGUI::formePrecedente() {}
+void InterfaceGUI::formePrecedente() {
+	if (_canevas.obtenirCoucheActive()->precedenteForme() == false)
+		messageErreur("Erreur lors de la séléction de la forme précédente de la couche!");
+}
 
-void InterfaceGUI::formeSuivante() {}
+void InterfaceGUI::formeSuivante() {
+	if (_canevas.obtenirCoucheActive()->prochaineForme() == false)
+		messageErreur("Erreur lors de la séléction de la forme suivante de la couche!");
+}
 
-void InterfaceGUI::formeDerniere() {}
+void InterfaceGUI::formeDerniere() {
+	if (_canevas.obtenirCoucheActive()->derniereForme() == false)
+		messageErreur("Erreur lors de la séléction de la derniere forem de la couche!");
+}
