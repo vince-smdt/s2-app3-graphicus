@@ -44,6 +44,11 @@ public:
     T *retirer(int index);
     T *obtenir(int index);
 
+    template <class T>
+    friend ostream& operator<<(ostream& s, Vecteur<T>& vec);
+    //friend ostream& operator<<(ostream& s, Vecteur<Couche> vec);
+    //friend ostream& operator<<(ostream& s, Vecteur<Forme> vec);
+
 private:
     T **_elements;
     int _taille;
@@ -84,14 +89,10 @@ void Vecteur<T>::operator--(int i) {
         _actif--;
 }
 
-
-
 template <class T>
 std::istream& operator >> (std::istream& input, Vecteur<T>& v) {
     // TODO si il a lieu
 }
-
-
 
 template <class T>
 Vecteur<T>::Vecteur() {
@@ -187,5 +188,24 @@ T* Vecteur<T>::obtenir(int index) {
 
     return _elements[index];
 }
+
+template <class T>
+ostream& operator<<(ostream& s, Vecteur<T>& vec) {
+    for (int i = 0; i < vec.taille(); i++)
+        s << vec[i];
+    return s;
+}
+
+//ostream& operator<<(ostream& s, Vecteur<Couche> vec) {
+//    for (int i = 0; i << vec.taille(); i++)
+//        s << vec[i];
+//    return s;
+//}
+//
+//ostream& operator<<(ostream& s, Vecteur<Forme> vec) {
+//    for (int i = 0; i << vec.taille(); i++)
+//        s << vec[i];
+//    return s;
+//}
 
 #endif

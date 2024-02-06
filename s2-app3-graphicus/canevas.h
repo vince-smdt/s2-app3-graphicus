@@ -46,6 +46,8 @@ public:
     bool translater(int deltaX, int deltaY);
     void afficher(ostream &s);
 
+    friend ostream& operator<<(ostream& s, Canevas& canevas);
+
 private:
     Vecteur<Couche> _couches;
     int _indexCoucheActive;

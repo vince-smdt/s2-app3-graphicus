@@ -174,6 +174,10 @@ bool Canevas::translater(int deltaX, int deltaY)
 
 void Canevas::afficher(ostream &s)
 {
-    for (int i = 0; i < _couches.taille(); i++)
-        _couches[i].afficher(s);
+    s << _couches;
+}
+
+ostream& operator<<(ostream& s, Canevas& canevas) {
+    canevas.afficher(s);
+    return s;
 }

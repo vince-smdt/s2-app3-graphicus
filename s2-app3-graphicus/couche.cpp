@@ -119,8 +119,7 @@ double Couche::aireTotal() {
 }
 
 void Couche::afficher(ostream &flot) {
-    flot << "L " << getEtatCStr() << endl;
-    formes.afficher(flot);
+    flot << "L " << getEtatCStr() << endl << formes;
 }
 
 Forme *Couche::retirerForme(int index) {
@@ -132,4 +131,9 @@ Forme *Couche::retirerForme(int index) {
 
 Forme *Couche::obtenirForme(int index) {
     return formes.obtenir(index);
+}
+
+ostream& operator<<(ostream& s, Couche& couche) {
+    couche.afficher(s);
+    return s;
 }

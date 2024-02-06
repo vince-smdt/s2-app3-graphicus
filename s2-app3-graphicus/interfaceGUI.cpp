@@ -23,7 +23,7 @@ std::string* const InterfaceGUI::separer(string entrer) {
 
 void InterfaceGUI::rafraichir() {
 	ostringstream ss;
-	_canevas.afficher(ss);
+	ss << _canevas;
 	dessiner(ss.str().c_str());
 	updateInformation();
 }
@@ -225,7 +225,7 @@ void InterfaceGUI::updateInformation() {
 			info.coordY = forme->getAncrage().y;
 			info.aireForme = forme->aire();
 			ostringstream infoForme;
-			forme->afficher(infoForme);
+			infoForme << *forme;
 			strcpy(info.informationForme, infoForme.str().c_str());
 		}
 	}

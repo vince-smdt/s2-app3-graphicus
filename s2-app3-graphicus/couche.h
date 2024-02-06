@@ -47,6 +47,8 @@ public:
 
     Forme *retirerForme(int index);
     Forme *obtenirForme(int index);
+
+    friend ostream& operator<<(ostream& s, Couche& couche);
 private:
     Vecteur<Forme> formes;
     Etat etat;
