@@ -8,7 +8,7 @@
 #include "interfaceGUI.h"
 #include <vector>
 
-InterfaceGUI::InterfaceGUI(const char* titre) : GraphicusGUI(titre) {}
+InterfaceGUI::InterfaceGUI(const char* titre) : GraphicusGUI(titre) { rafraichir(); }
 
 std::string* const InterfaceGUI::separer(string entrer) {
 	std::istringstream flux(entrer);
@@ -101,7 +101,12 @@ void InterfaceGUI::coucheRetirer() {
 	rafraichir();
 }
 
-void InterfaceGUI::coucheTranslater(int deltaX, int deltaY) {}
+void InterfaceGUI::coucheTranslater(int deltaX, int deltaY) {
+	if (_canevas.translater(deltaX, deltaY) == false)
+		messageErreur("Erreur lors de la translation de la couche!");
+
+	rafraichir();
+}
 
 void InterfaceGUI::ajouterCercle(int x, int y, int rayon) {
 	if (_canevas.ajouterForme(new Cercle(x, y, rayon)) == false) {

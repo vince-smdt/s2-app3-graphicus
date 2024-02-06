@@ -67,39 +67,29 @@ const char* Couche::getEtatCStr() {
 }
 
 bool Couche::prochaineForme() {
-    if (formes.taille() == 0)
-        return false;
-
-    if (++_indexFormeActive >= formes.taille())
-        _indexFormeActive = 0;
+    if (formes.taille() > 0 && _indexFormeActive < formes.taille() - 1)
+        _indexFormeActive++;
 
     return true;
 }
 
 bool Couche::precedenteForme() {
-    if (formes.taille() == 0)
-        return false;
-
-    if (--_indexFormeActive < 0)
-        _indexFormeActive = formes.taille() - 1;
+    if (formes.taille() > 0 && _indexFormeActive > 0)
+        _indexFormeActive--;
 
     return true;
 }
 
 bool Couche::premiereForme() {
-    if (formes.taille() == 0)
-        return false;
-
-    _indexFormeActive = 0;
+    if (formes.taille() > 0)
+        _indexFormeActive = 0;
 
     return true;
 }
 
 bool Couche::derniereForme() {
-    if (formes.taille() == 0)
-        return false;
-
-    _indexFormeActive = formes.taille() - 1;
+    if (formes.taille() > 0)
+        _indexFormeActive = formes.taille() - 1;
 
     return true;
 }
