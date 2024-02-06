@@ -3,7 +3,7 @@
  * Auteurs: Vincent Simard-Schmidt (simv2104) & Kevin Gauvin (gauk1703)
  * Date: 05 janvier 2024 (creation)
  * Description: Declaration de la classe Carre. La classe
- *    hérite de la classe Rectangle et représente un carre par sa
+ *    herite de la classe Rectangle et represente un carre par sa
  *    longueur de cote. Ce fichier fait partie de la distribution
  *    de Graphicus.
 ********/

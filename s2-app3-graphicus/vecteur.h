@@ -2,6 +2,8 @@
  * Fichier: vecteur.h
  * Auteurs: Vincent Simard-Schmidt (simv2104) & Kevin Gauvin (gauk1703)
  * Date: 05 janvier 2024 (creation)
+ * Modifie par : Vincent Simard-Schmidt (simv2104) & Kevin Gauvin (gauk1703)
+ * Date : 05 fevrier 2024
  * Description: Declaration de la classe Vecteur. La classe permet
  *    de stocker plusieurs formes et peut dynamiquement modifier
  *    la taille de son conteneur. Ce fichier fait partie de la
@@ -44,7 +46,6 @@ private:
 
 template <class T>
 Vecteur<T>::Vecteur() {
-    T* elements;
     _taille = 0;
     _capacite = CAPACITE_DEPART;
     _elements = new T * [_capacite];
