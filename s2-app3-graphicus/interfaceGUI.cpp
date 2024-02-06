@@ -10,9 +10,7 @@
 
 InterfaceGUI::InterfaceGUI(const char* titre) : GraphicusGUI(titre) {}
 
-std::string _mesMesures[5];
-
-std::string* const separer(string entrer) {
+std::string* const InterfaceGUI::separer(string entrer) {
 	std::istringstream flux(entrer);
 	std::string mesure;
 	int i = 0;
@@ -83,11 +81,10 @@ bool InterfaceGUI::sauvegarderFichier(const char* nom) {
 	std::ofstream fichier(nom);
 	if (fichier.is_open()) {
 		afficher(fichier);
+		return true;
 	}
-	else
-		return false;
-	
-	}
+	return false;	
+}
 
 void InterfaceGUI::reinitialiserCanevas() { 
 	_canevas.reinitialiser();
