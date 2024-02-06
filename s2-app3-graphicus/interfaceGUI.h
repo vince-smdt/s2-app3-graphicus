@@ -23,7 +23,7 @@ using namespace std;
 class InterfaceGUI : public GraphicusGUI
 {
 public:
-	InterfaceGUI(const char* titre = nullptr);
+	InterfaceGUI(const char* titre = "GraphicusGUI");
 
 	// Actions de fichiers
 	bool ouvrirFichier(const char* nom);
@@ -52,6 +52,7 @@ public:
 
 	// Helper pour l'envoi d'information
 	void updateInformation();
+	void rafraichir();
 private:
 	Canevas _canevas;
 };

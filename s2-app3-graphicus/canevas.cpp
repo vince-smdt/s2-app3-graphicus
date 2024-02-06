@@ -93,7 +93,7 @@ bool Canevas::prochaineCouche() {
     int newIndex = _indexCoucheActive;
 
     if (++newIndex >= _couches.taille())
-        newIndex = 0;
+        newIndex = _couches.taille() - 1;
 
     return activerCouche(newIndex);
 }
@@ -102,7 +102,7 @@ bool Canevas::precedenteCouche() {
     int newIndex = _indexCoucheActive;
 
     if (--newIndex < 0)
-        newIndex = _couches.taille() - 1;
+        newIndex = 0;
 
     return activerCouche(newIndex);
 }
@@ -112,7 +112,9 @@ bool Canevas::premiereCouche() {
 }
 
 int Canevas::derniereCouche() {
-    return _couches.taille() - 1;
+    int derniereCouche = _couches.taille() - 1;
+    activerCouche(derniereCouche);
+    return derniereCouche;
 }
 
 Couche* Canevas::obtenirCoucheActive() {

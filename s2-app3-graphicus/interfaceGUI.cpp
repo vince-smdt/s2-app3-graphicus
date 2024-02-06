@@ -12,7 +12,6 @@ InterfaceGUI::InterfaceGUI(const char* titre) : GraphicusGUI(titre) {}
 
 std::string _mesMesures[5];
 
-
 std::string* const separer(string entrer) {
 	std::istringstream flux(entrer);
 	std::string mesure;
@@ -24,7 +23,16 @@ std::string* const separer(string entrer) {
 	return _mesMesures;
 }
 
+void InterfaceGUI::rafraichir() {
+	ostringstream ss;
+	_canevas.afficher(ss);
+	dessiner(ss.str().c_str());
+	updateInformation();
+}
+
 bool InterfaceGUI::ouvrirFichier(const char* nom) {
+
+
 	std::ifstream fichier(nom);
 	if (fichier.is_open()) {
 		std::string* mesMesures;
@@ -67,35 +75,26 @@ bool InterfaceGUI::ouvrirFichier(const char* nom) {
 		return false;
 	}
 
-	//int lenghtMax = 0;
-	//int lastSlash = 0;
-
-	//while (nom[lenghtMax] != '\0')
-	//	lenghtMax++;
-
-	//// Trouver où est la dernier /
-	//const char* temp = nom;
-	//for (int i = 0; i < lenghtMax; i++)
-	//	if (temp[i] == '\\' || temp[i] == '/') 
-	//		lastSlash = i + 1;
-
-	//// Changer contenu de nom
-	//nom = "";
-	//for (int i = lastSlash; i < lenghtMax; i++)
-	//	nom += temp[i];
-
-
-
+	rafraichir();
 	return true;
 }
 
 bool InterfaceGUI::sauvegarderFichier(const char* nom) { return 0; }
 
-void InterfaceGUI::reinitialiserCanevas() { _canevas.reinitialiser(); }
+void InterfaceGUI::reinitialiserCanevas() { 
+	_canevas.reinitialiser();
+	rafraichir();
+}
 
-void InterfaceGUI::coucheAjouter() {}
+void InterfaceGUI::coucheAjouter() { 
+	_canevas.ajouterCouche(); 
+	rafraichir(); 
+}
 
-void InterfaceGUI::coucheRetirer() {}
+void InterfaceGUI::coucheRetirer() { 
+	_canevas.retirerCouche(_canevas.indexCoucheActive());
+	rafraichir();
+}
 
 void InterfaceGUI::coucheTranslater(int deltaX, int deltaY) {}
 
@@ -111,11 +110,7 @@ void InterfaceGUI::ajouterCercle(int x, int y, int rayon) {
 		return;
 	}
 
-	ostringstream ss;
-	_canevas.afficher(ss);
-	dessiner(ss.str().c_str());
-
-	updateInformation();
+	rafraichir();
 }
 
 void InterfaceGUI::ajouterRectangle(int x, int y, int longueur, int largeur) {
@@ -128,11 +123,7 @@ void InterfaceGUI::ajouterRectangle(int x, int y, int longueur, int largeur) {
 		return;
 	}
 
-	ostringstream ss;
-	_canevas.afficher(ss);
-	dessiner(ss.str().c_str());
-
-	updateInformation();
+	rafraichir();
 }
 
 void InterfaceGUI::ajouterCarre(int x, int y, int cote) {
@@ -145,63 +136,59 @@ void InterfaceGUI::ajouterCarre(int x, int y, int cote) {
 		return;
 	}
 
-	ostringstream ss;
-	_canevas.afficher(ss);
-	dessiner(ss.str().c_str());
-
-	updateInformation();
+	rafraichir();
 }
 
-void InterfaceGUI::retirerForme() {}
+void InterfaceGUI::retirerForme() { }
 
 void InterfaceGUI::modePileChange(bool mode) {}
 
 void InterfaceGUI::couchePremiere() { 
 	if (_canevas.premiereCouche() == false)
 		messageErreur("Erreur lors de la selection de la premiere couche!");
-	updateInformation();
+	rafraichir();
 }
 
 void InterfaceGUI::couchePrecedente() {
 	if (_canevas.precedenteCouche() == false)
 		messageErreur("Erreur lors de la selection de la couche precedente!");
-	updateInformation();
+	rafraichir();
 }
 
 void InterfaceGUI::coucheSuivante() {
 	if (_canevas.prochaineCouche() == false)
 		messageErreur("Erreur lors de la selection de la couche suivante!");
-	updateInformation();
+	rafraichir();
 }
 
 void InterfaceGUI::coucheDerniere() { 
 	if (_canevas.derniereCouche() == false)
 		messageErreur("Erreur lors de la selection de la derniere couche!");
-	updateInformation();
+	rafraichir();
 }
 
 void InterfaceGUI::formePremiere() {
 	if (_canevas.obtenirCoucheActive()->premiereForme() == false)
 		messageErreur("Erreur lors de la selection de la premiere forme de la couche!");
-	updateInformation();
+	rafraichir();
 }
 
 void InterfaceGUI::formePrecedente() {
 	if (_canevas.obtenirCoucheActive()->precedenteForme() == false)
 		messageErreur("Erreur lors de la selection de la forme precedente de la couche!");
-	updateInformation();
+	rafraichir();
 }
 
 void InterfaceGUI::formeSuivante() {
 	if (_canevas.obtenirCoucheActive()->prochaineForme() == false)
 		messageErreur("Erreur lors de la selection de la forme suivante de la couche!");
-	updateInformation();
+	rafraichir();
 }
 
 void InterfaceGUI::formeDerniere() {
 	if (_canevas.obtenirCoucheActive()->derniereForme() == false)
 		messageErreur("Erreur lors de la selection de la derniere forem de la couche!");
-	updateInformation();
+	rafraichir();
 }
 
 void InterfaceGUI::updateInformation() {
@@ -215,19 +202,25 @@ void InterfaceGUI::updateInformation() {
 
 	// Couche active
 	Couche* couche = _canevas.obtenirCoucheActive();
-	info.nbFormesCouche = couche->nbFormes();
-	strcpy(info.etatCouche, couche->getEtatCStr());
-	info.aireCouche = couche->aireTotal();
-	info.formeActive = couche->obtenirIndexFormeActive();
+	if (couche != nullptr) {
+		info.nbFormesCouche = couche->nbFormes();
+		strcpy(info.etatCouche, couche->getEtatCStr());
+		info.aireCouche = couche->aireTotal();
+		info.formeActive = couche->obtenirIndexFormeActive();
 
-	// Forme active
-	Forme* forme = couche->obtenirFormeActive();
-	info.coordX = forme->getAncrage().x;
-	info.coordY = forme->getAncrage().y;
-	info.aireForme = forme->aire();
-	ostringstream infoForme;
-	forme->afficher(infoForme);
-	strcpy(info.informationForme, infoForme.str().c_str());
+		// Forme active
+		Forme* forme = couche->obtenirFormeActive();
+		if (forme != nullptr) {
+			info.coordX = forme->getAncrage().x;
+			info.coordY = forme->getAncrage().y;
+			info.aireForme = forme->aire();
+			ostringstream infoForme;
+			forme->afficher(infoForme);
+			strcpy(info.informationForme, infoForme.str().c_str());
+		}
+	}
+
+	
 
 	setInformations(info);
 }
