@@ -14,6 +14,7 @@ Canevas::Canevas()
 {
     _indexCoucheActive = 0;
     activerCouche(_indexCoucheActive);
+    _couches.ajouter(new Couche);
 }
 
 Canevas::~Canevas()
@@ -45,8 +46,7 @@ bool Canevas::reinitialiserCouche(int index)
 }
 
 bool Canevas::ajouterCouche() {
-    Couche* c = new Couche;
-    return _couches.ajouter(c);
+    return _couches.ajouter(new Couche);
 }
 
 bool Canevas::retirerCouche(int index) {
@@ -84,6 +84,32 @@ bool Canevas::desactiverCouche(int index)
         _indexCoucheActive = -1;
 
     return _couches[index].changerEtat(Couche::Etat::Active);
+}
+
+bool Canevas::prochaineCouche() {
+    int newIndex = _indexCoucheActive;
+
+    if (++newIndex >= _couches.taille())
+        newIndex = 0;
+
+    return activerCouche(newIndex);
+}
+
+bool Canevas::precedenteCouche() {
+    int newIndex = _indexCoucheActive;
+
+    if (--newIndex < 0)
+        newIndex = _couches.taille() - 1;
+
+    return activerCouche(newIndex);
+}
+
+bool Canevas::premiereCouche() {
+    return activerCouche(0);
+}
+
+bool Canevas::derniereCouche() {
+    return activerCouche(_couches.taille() - 1);
 }
 
 bool Canevas::ajouterForme(Forme *p_forme)

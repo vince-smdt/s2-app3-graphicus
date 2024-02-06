@@ -13,7 +13,7 @@ bool InterfaceGUI::ouvrirFichier(const char* nom) { return 0; }
 
 bool InterfaceGUI::sauvegarderFichier(const char* nom) { return 0; }
 
-void InterfaceGUI::reinitialiserCanevas() { _canevas.reinitialiser();  }
+void InterfaceGUI::reinitialiserCanevas() { _canevas.reinitialiser(); }
 
 void InterfaceGUI::coucheAjouter() {}
 
@@ -31,13 +31,13 @@ void InterfaceGUI::retirerForme() {}
 
 void InterfaceGUI::modePileChange(bool mode) {}
 
-void InterfaceGUI::couchePremiere() {}
+void InterfaceGUI::couchePremiere() { _canevas.premiereCouche(); }
 
-void InterfaceGUI::couchePrecedente() {}
+void InterfaceGUI::couchePrecedente() { _canevas.precedenteCouche(); }
 
-void InterfaceGUI::coucheSuivante() {}
+void InterfaceGUI::coucheSuivante() { _canevas.prochaineCouche(); }
 
-void InterfaceGUI::coucheDerniere() {}
+void InterfaceGUI::coucheDerniere() { _canevas.derniereCouche(); }
 
 void InterfaceGUI::formePremiere() {}
 
