@@ -46,6 +46,9 @@ public:
 	void formePrecedente();
 	void formeSuivante();
 	void formeDerniere();
+
+	// Helper pour l'envoi d'information
+	void updateInformation();
 private:
 	Canevas _canevas;
 };
