@@ -9,11 +9,11 @@
 
 InterfaceGUI::InterfaceGUI(const char* titre) : GraphicusGUI(titre) {}
 
-bool InterfaceGUI::ouvrirFichier(const char* nom) { return 0;  }
+bool InterfaceGUI::ouvrirFichier(const char* nom) { return 0; }
 
-bool InterfaceGUI::sauvegarderFichier(const char* nom) { return 0;  }
+bool InterfaceGUI::sauvegarderFichier(const char* nom) { return 0; }
 
-void InterfaceGUI::reinitialiserCanevas() {}
+void InterfaceGUI::reinitialiserCanevas() { _canevas.reinitialiser();  }
 
 void InterfaceGUI::coucheAjouter() {}
 

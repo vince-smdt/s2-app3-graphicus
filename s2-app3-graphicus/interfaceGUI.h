@@ -9,6 +9,7 @@
 #ifndef INTERFACEGUI_H
 #define INTERFACEGUI_H
 
+#include "canevas.h"
 #include "graphicusGUI.h"
 
 class InterfaceGUI : public GraphicusGUI
@@ -40,6 +41,8 @@ public:
 	void formePrecedente();
 	void formeSuivante();
 	void formeDerniere();
+private:
+	Canevas _canevas;
 };
 
 #endif
