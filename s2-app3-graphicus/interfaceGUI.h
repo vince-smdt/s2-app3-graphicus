@@ -10,7 +10,12 @@
 #define INTERFACEGUI_H
 
 #include "canevas.h"
+#include "carre.h"
+#include "cercle.h"
 #include "graphicusGUI.h"
+#include <sstream>
+
+using namespace std;
 
 class InterfaceGUI : public GraphicusGUI
 {
@@ -26,7 +31,7 @@ public:
 	void coucheAjouter();
 	void coucheRetirer();
 	void coucheTranslater(int deltaX, int deltaY);
-	void ajouterCerclee(int x, int y, int rayon);
+	void ajouterCercle(int x, int y, int rayon);
 	void ajouterRectangle(int x, int y, int longueur, int largeur);
 	void ajouterCarre(int x, int y, int cote);
 	void retirerForme();

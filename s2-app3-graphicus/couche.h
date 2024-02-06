@@ -36,6 +36,7 @@ public:
     bool precedenteForme();
     bool premiereForme();
     bool derniereForme();
+    Forme* obtenirFormeActive();
 
     double aireTotal();
 

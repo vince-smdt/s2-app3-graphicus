@@ -14,7 +14,10 @@ Canevas::Canevas()
 {
     _indexCoucheActive = 0;
     activerCouche(_indexCoucheActive);
-    _couches.ajouter(new Couche);
+
+    Couche* c = new Couche;
+    c->changerEtat(Couche::Etat::Active);
+    _couches.ajouter(c);
 }
 
 Canevas::~Canevas()

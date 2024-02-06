@@ -95,6 +95,10 @@ bool Couche::derniereForme() {
     return true;
 }
 
+Forme* Couche::obtenirFormeActive() {
+    return &formes[_indexFormeActive];
+}
+
 double Couche::aireTotal() {
     if (etat == Etat::Initialisee)
         return 0;

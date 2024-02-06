@@ -22,5 +22,5 @@ double Rectangle::aire() {
 }
 
 void Rectangle::afficher(ostream &flot) {
-    flot << "C " << ancrage.x << " " << ancrage.y << " " << _dimensions.x << " " << _dimensions.y << endl;
+    flot << "R " << ancrage.x << " " << ancrage.y << " " << _dimensions.x << " " << _dimensions.y << endl;
 }
