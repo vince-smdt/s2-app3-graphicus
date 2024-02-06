@@ -3,7 +3,7 @@
  * Auteurs: Vincent Simard-Schmidt (simv2104) & Kevin Gauvin (gauk1703)
  * Date: 05 janvier 2024 (creation)
  * Description: Declaration de la classe Cercle. La classe
- *    hérite de la classe Forme et représente un cercle par son
+ *    herite de la classe Forme et represente un cercle par son
  *    rayon. Ce fichier fait partie de la distribution de Graphicus.
 ********/
 

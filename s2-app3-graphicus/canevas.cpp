@@ -3,7 +3,7 @@
  * Auteurs: C.-A. Brunet
  * Date: 04 janvier 2024 (creation)
  * Modifie par : Vincent Simard-Schmidt (simv2104) & Kevin Gauvin (gauk1703)
- * Date : 05 janvier 2024
+ * Date : 05 fevrier 2024
  * Description: Implementation des methodes des classes decrites dans
  *    canevas.h. Ce fichier fait partie de la distribution de Graphicus.
 ********/
@@ -104,8 +104,6 @@ bool Canevas::translater(int deltaX, int deltaY)
 
 void Canevas::afficher(ostream &s)
 {
-    for (int i = 0; i < MAX_COUCHES; i++) {
-        s << "----- Couche " << i << " -----" << endl;
+    for (int i = 0; i < MAX_COUCHES; i++)
         _couches[i].afficher(s);
-    }
 }
