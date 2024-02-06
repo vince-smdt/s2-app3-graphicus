@@ -37,6 +37,7 @@ public:
     Couche* obtenirCoucheActive();
     int indexCoucheActive();
     int nbCouches();
+    void modePile();
 
     bool ajouterForme(Forme *p_forme);
     bool retirerForme(int index);
