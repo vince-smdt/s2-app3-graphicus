@@ -15,6 +15,31 @@ class InterfaceGUI : public GraphicusGUI
 {
 public:
 	InterfaceGUI(const char* titre = nullptr);
+
+	// Actions de fichiers
+	bool ouvrirFichier(const char* nom);
+	bool sauvegarderFichier(const char* nom);
+
+	// Actions de canevas, de couches et de formes
+	void reinitialiserCanevas();
+	void coucheAjouter();
+	void coucheRetirer();
+	void coucheTranslater(int deltaX, int deltaY);
+	void ajouterCerclee(int x, int y, int rayon);
+	void ajouterRectangle(int x, int y, int longueur, int largeur);
+	void ajouterCarre(int x, int y, int cote);
+	void retirerForme();
+	void modePileChange(bool mode);
+
+	// Actions de navigation
+	void couchePremiere();
+	void couchePrecedente();
+	void coucheSuivante();
+	void coucheDerniere();
+	void formePremiere();
+	void formePrecedente();
+	void formeSuivante();
+	void formeDerniere();
 };
 
 #endif
