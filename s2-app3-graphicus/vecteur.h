@@ -23,6 +23,12 @@ public:
     Vecteur();
     ~Vecteur();
 
+    void operator+=(T donnee);
+    void operator[](int index);
+    void operator++(int i);
+    void operator--(int i);
+
+
     int capacite();
     void doublerCapacite();
     void vider();
@@ -40,7 +46,50 @@ private:
     T **_elements;
     int _taille;
     int _capacite;
+    int _actif;
 };
+
+template <class T>
+void Vecteur<T>::operator+=(T donnee) {
+    ajouter(donnee);
+}
+
+template <class T>
+void Vecteur<T>::operator[](int index) {
+    obtenir(index);
+}
+
+template <class T>
+void operator<<(ostream& out, T _elements) {
+    afficher(cout);
+}
+
+template <class T>
+void Vecteur<T>::operator++(int i) {
+    // Passe à l'item suivant de vecteur.
+    if (_actif == nullptr)
+        _actif = 0;
+    else
+        _actif++;
+}
+
+template <class T>
+void Vecteur<T>::operator++(int i) {
+    // Passe à l'item précédent de vecteur.
+    if (_actif == 0)
+        _actif = nullptr;
+    else
+        _actif--;
+}
+
+
+
+template <class T>
+std::istream& operator >> (std::istream& input, Vecteur<T>& v) {
+    // TODO si il a lieu
+}
+
+
 
 template <class T>
 Vecteur<T>::Vecteur() {
@@ -82,6 +131,7 @@ void Vecteur<T>::vider() {
     _taille = 0;
     _capacite = CAPACITE_DEPART;
     _elements = new T * [_capacite];
+    _actif = nullptr;
 }
 
 template <class T>
@@ -108,8 +158,7 @@ bool Vecteur<T>::ajouter(T* element) {
     if (_taille + 1 > _capacite)
         doublerCapacite();
 
-    _elements[_taille] = element;
-
+    _elements[_taille] = element;    
     _taille++;
 
     return true;
