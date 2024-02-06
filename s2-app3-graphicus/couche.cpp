@@ -11,20 +11,20 @@
 #include "couche.h"
 
 Couche::Couche() {
-    etat = Initialisee;
+    etat = Etat::Initialisee;
 }
 
 Couche::~Couche() {}
 
 bool Couche::ajouterForme(Forme *forme) {
-    if (etat != Active)
+    if (etat != Etat::Active)
         return false;
 
     return formes.ajouter(forme);
 }
 
 bool Couche::translater(int deltaX, int deltaY) {
-    if (etat != Active)
+    if (etat != Etat::Active)
         return false;
 
     for (int i = 0; i < formes.taille(); i++)
@@ -34,7 +34,7 @@ bool Couche::translater(int deltaX, int deltaY) {
 }
 
 bool Couche::reinitialiser() {
-    etat = Initialisee;
+    etat = Etat::Initialisee;
 
     formes.vider();
 
@@ -44,7 +44,7 @@ bool Couche::reinitialiser() {
 }
 
 bool Couche::changerEtat(Etat e) {
-    if(e != Couche::Active && e != Couche::Inactive)
+    if(e != Etat::Active && e != Etat::Inactive)
         return false;
     etat = e;
     return true;
@@ -55,7 +55,7 @@ Couche::Etat Couche::getEtat() {
 }
 
 double Couche::aireTotal() {
-    if (etat == Initialisee)
+    if (etat == Etat::Initialisee)
         return 0;
 
     double somme = 0;
@@ -69,10 +69,10 @@ double Couche::aireTotal() {
 void Couche::afficher(ostream &flot) {
     flot << "L ";
     switch (etat) {
-        case Initialisee:   flot << "i";        break;
-        case Active:        flot << "a";        break;
-        case Inactive:      flot << "x";        break;
-        default:            flot << "erreur";   break;
+        case Etat::Initialisee:     flot << "i";        break;
+        case Etat::Active:          flot << "a";        break;
+        case Etat::Inactive:        flot << "x";        break;
+        default:                    flot << "erreur";   break;
     }
     flot << endl;
 
@@ -80,7 +80,7 @@ void Couche::afficher(ostream &flot) {
 }
 
 Forme *Couche::retirerForme(int index) {
-    if (etat != Active)
+    if (etat != Etat::Active)
         return nullptr;
 
     return formes.retirer(index);
