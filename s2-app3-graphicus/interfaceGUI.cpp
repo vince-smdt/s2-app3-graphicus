@@ -8,11 +8,9 @@
 #include "interfaceGUI.h"
 #include <vector>
 
-InterfaceGUI::InterfaceGUI(const char* titre) : GraphicusGUI(titre) {}
+InterfaceGUI::InterfaceGUI(const char* titre) : GraphicusGUI(titre) { rafraichir(); }
 
-std::string _mesMesures[5];
-
-std::string* const separer(string entrer) {
+std::string* const InterfaceGUI::separer(string entrer) {
 	std::istringstream flux(entrer);
 	std::string mesure;
 	int i = 0;
@@ -83,11 +81,10 @@ bool InterfaceGUI::sauvegarderFichier(const char* nom) {
 	std::ofstream fichier(nom);
 	if (fichier.is_open()) {
 		afficher(fichier);
+		return true;
 	}
-	else
-		return false;
-	
-	}
+	return false;	
+}
 
 void InterfaceGUI::reinitialiserCanevas() { 
 	_canevas.reinitialiser();
@@ -104,7 +101,12 @@ void InterfaceGUI::coucheRetirer() {
 	rafraichir();
 }
 
-void InterfaceGUI::coucheTranslater(int deltaX, int deltaY) {}
+void InterfaceGUI::coucheTranslater(int deltaX, int deltaY) {
+	if (_canevas.translater(deltaX, deltaY) == false)
+		messageErreur("Erreur lors de la translation de la couche!");
+
+	rafraichir();
+}
 
 void InterfaceGUI::ajouterCercle(int x, int y, int rayon) {
 	if (_canevas.ajouterForme(new Cercle(x, y, rayon)) == false) {

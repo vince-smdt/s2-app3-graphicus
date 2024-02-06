@@ -25,6 +25,8 @@ class InterfaceGUI : public GraphicusGUI
 public:
 	InterfaceGUI(const char* titre = "GraphicusGUI");
 
+	std::string* const separer(string entrer);
+
 	// Actions de fichiers
 	bool ouvrirFichier(const char* nom);
 	bool sauvegarderFichier(const char* nom);
@@ -55,6 +57,7 @@ public:
 	void rafraichir();
 private:
 	Canevas _canevas;
+	std::string _mesMesures[5];
 };
 
 #endif
