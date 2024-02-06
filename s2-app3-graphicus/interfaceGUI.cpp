@@ -31,7 +31,7 @@ void InterfaceGUI::rafraichir() {
 }
 
 bool InterfaceGUI::ouvrirFichier(const char* nom) {
-
+	_canevas.reinitialiser();
 
 	std::ifstream fichier(nom);
 	if (fichier.is_open()) {
@@ -79,7 +79,15 @@ bool InterfaceGUI::ouvrirFichier(const char* nom) {
 	return true;
 }
 
-bool InterfaceGUI::sauvegarderFichier(const char* nom) { return 0; }
+bool InterfaceGUI::sauvegarderFichier(const char* nom) { 
+	std::ofstream fichier(nom);
+	if (fichier.is_open()) {
+		afficher(fichier);
+	}
+	else
+		return false;
+	
+	}
 
 void InterfaceGUI::reinitialiserCanevas() { 
 	_canevas.reinitialiser();
