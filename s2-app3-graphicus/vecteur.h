@@ -25,7 +25,7 @@ public:
 	Vecteur();
 	~Vecteur();
 
-	void operator+=(T donnee);
+	bool operator+=(T* donnee);
 	T& operator[](int index);
 	void operator++();
 	void operator--();
@@ -61,8 +61,8 @@ private:
 };
 
 template <class T>
-void Vecteur<T>::operator+=(T donnee) {
-	ajouter(donnee);
+bool Vecteur<T>::operator+=(T* donnee) {
+	return ajouter(donnee);
 }
 
 template <class T>
@@ -225,6 +225,9 @@ T* Vecteur<T>::retirer(int index) {
 		_elements[i] = _elements[i + 1];
 
 	_taille--;
+
+	if (_actif >= _taille)
+		_actif = _taille - 1;
 
 	return elementRetiree;
 }

@@ -20,7 +20,7 @@ bool Couche::ajouterForme(Forme *forme) {
     if (etat != Etat::Active)
         return false;
 
-    bool succes = formes.ajouter(forme);
+    bool succes = (formes += forme);
     formes.setActif(formes.taille() - 1);
     return succes;
 }
