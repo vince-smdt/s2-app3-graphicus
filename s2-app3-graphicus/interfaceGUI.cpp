@@ -33,51 +33,13 @@ bool InterfaceGUI::ouvrirFichier(const char* nom) {
 	_canevas.reinitialiser();
 
 	std::ifstream fichier(nom);
-	if (fichier.is_open()) {
-		std::string* mesMesures;
-		std::string ligne;
 
-		while (std::getline(fichier, ligne)) {
-			switch (ligne[0])
-			{
-			case *"L":
-				if (premiereCouche == false)
-					premiereCouche = true;
-				else
-					_canevas.ajouterCouche();
-
-				switch (ligne[2])
-				{
-				case * "a":
-					_canevas.activerCouche(_canevas.derniereCouche());
-					break;
-				case * "x":
-					_canevas.desactiverCouche(_canevas.derniereCouche());
-					break;
-				}
-				break;
-			case *"R":
-				mesMesures = separer(ligne);
-				_canevas.ajouterForme(new Rectangle(std::stoi(mesMesures[1]), std::stoi(mesMesures[2]), std::stoi(mesMesures[3]), std::stoi(mesMesures[4])));
-				break;
-			case * "K":
-				mesMesures = separer(ligne);
-				_canevas.ajouterForme(new Carre(std::stoi(mesMesures[1]), std::stoi(mesMesures[2]), std::stoi(mesMesures[3])));
-				break;
-			case * "C":
-				mesMesures = separer(ligne);
-				_canevas.ajouterForme(new Cercle(std::stoi(mesMesures[1]), std::stoi(mesMesures[2]), std::stoi(mesMesures[3])));
-				break;
-			default:
-				return false;
-			}
-		}
-		fichier.close();
-	} 
-	else {
+	if (!fichier.is_open())
 		return false;
-	}
 
+	fichier >> _canevas;
+	fichier.close();
+	
 	rafraichir();
 	return true;
 }

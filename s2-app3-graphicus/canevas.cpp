@@ -49,7 +49,8 @@ bool Canevas::reinitialiserCouche(int index)
 }
 
 bool Canevas::ajouterCouche() {
-	return _couches.ajouter(new Couche);
+	return _couches.ajouter(new Couche)
+		   && derniereCouche();
 }
 
 bool Canevas::retirerCouche(int index) {
@@ -180,6 +181,45 @@ void Canevas::afficher(ostream& s)
 ostream& operator<<(ostream& s, Canevas& canevas) {
     canevas.afficher(s);
     return s;
+}
+
+istream& operator>>(istream& s, Canevas& canevas) {
+	canevas.reinitialiser();
+
+	bool premiereCouche = true;
+	char ligne[256];
+	char params[4][256];
+
+	while (s >> ligne) {
+		switch (ligne[0]) {
+			case 'L':
+				if (premiereCouche)	premiereCouche = false;
+				else				canevas.ajouterCouche();
+
+				switch (ligne[2]) {
+					case 'a':	canevas.activerCouche(canevas.derniereCouche());	break;
+					case 'x':	canevas.desactiverCouche(canevas.derniereCouche());	break;
+				}
+				break;
+			case 'R':
+				for (int i = 0; i < 4; i++)
+					s >> params[i];
+				canevas.ajouterForme(new Rectangle(stoi(params[0]), stoi(params[1]), stoi(params[2]), stoi(params[3])));
+				break;
+			case 'K':
+				for (int i = 0; i < 3; i++)
+					s >> params[i];
+				canevas.ajouterForme(new Carre(stoi(params[0]), stoi(params[1]), stoi(params[2])));
+				break;
+			case 'C':
+				for (int i = 0; i < 3; i++)
+					s >> params[i];
+				canevas.ajouterForme(new Cercle(stoi(params[0]), stoi(params[1]), stoi(params[2])));
+				break;
+		}
+	}
+
+	return s;
 }
 
 void Canevas::modePile() {

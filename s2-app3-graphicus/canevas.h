@@ -10,7 +10,11 @@
 ********/
 
 #include <iostream>
+#include <string>
+#include "carre.h"
+#include "cercle.h"
 #include "couche.h"
+#include "rectangle.h"
 
 #ifndef CANEVAS_H
 #define CANEVAS_H
@@ -48,6 +52,7 @@ public:
     void afficher(ostream &s);
 
     friend ostream& operator<<(ostream& s, Canevas& canevas);
+    friend istream& operator>>(istream& s, Canevas& canevas);
 
 private:
     Vecteur<Couche> _couches;
