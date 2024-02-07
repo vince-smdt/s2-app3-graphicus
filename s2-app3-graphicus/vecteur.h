@@ -27,8 +27,8 @@ public:
 
 	void operator+=(T donnee);
 	T& operator[](int index);
-	void operator++(int i);
-	void operator--(int i);
+	void operator++();
+	void operator--();
 
     template <class T>
     friend ostream& operator<<(ostream& s, Vecteur<T>& vec);
@@ -76,7 +76,7 @@ void operator<<(Vecteur<T> v, T _elements) {
 }
 
 template <class T>
-void Vecteur<T>::operator++(int i) {
+void Vecteur<T>::operator++() {
 	// Passe a l'item suivant de vecteur.
 	if (_actif == -1)
 		_actif = 0;
@@ -85,7 +85,7 @@ void Vecteur<T>::operator++(int i) {
 }
 
 template <class T>
-void Vecteur<T>::operator--(int i) {
+void Vecteur<T>::operator--() {
 	// Passe a l'item precedent de vecteur.
 	if (_actif == 0)
 		_actif = -1;
@@ -160,10 +160,6 @@ void Vecteur<T>::doublerCapacite() {
 
 template <class T>
 void Vecteur<T>::vider() {
-	// Vecteur ne doit plus delete
-	//for (int i = 0; i < _taille; i++)
-	//    delete _elements[i];
-
 	_taille = 0;
 	_capacite = CAPACITE_DEPART;
 	_elements = new T * [_capacite];
