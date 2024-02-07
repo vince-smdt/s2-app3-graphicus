@@ -43,9 +43,12 @@ public:
 	void modePile();
 
 	int taille();
+	int actif();
 
 	bool estVide();
 	bool ajouter(T* element);
+	bool setActif(int valeur);
+	void setActifAucun();
 
 	T* retirer(int index);
 	T* obtenir(int index);
@@ -54,7 +57,7 @@ private:
 	T** _elements;
 	int _taille;
 	int _capacite;
-	int _actif = -1;
+	int _actif;
 };
 
 template <class T>
@@ -108,6 +111,7 @@ istream& operator>>(std::istream& input, Vecteur<T>& v) {
 template <class T>
 Vecteur<T>::Vecteur() {
 	_taille = 0;
+	_actif = -1;
 	_capacite = CAPACITE_DEPART;
 	_elements = new T * [_capacite];
 }
@@ -175,6 +179,24 @@ void Vecteur<T>::afficher(ostream& flot) {
 template <class T>
 int Vecteur<T>::taille() {
 	return _taille;
+}
+
+template <class T>
+int Vecteur<T>::actif() {
+	return _actif;
+}
+
+template <class T>
+bool Vecteur<T>::setActif(int valeur) {
+	if (0 > valeur || valeur >= _taille)
+		return false;
+	_actif = valeur;
+	return true;
+}
+
+template <class T>
+void Vecteur<T>::setActifAucun() {
+	_actif = -1;
 }
 
 template <class T>

@@ -12,12 +12,12 @@
 
 Canevas::Canevas()
 {
-	_indexCoucheActive = 0;
-	activerCouche(_indexCoucheActive);
-
 	Couche* c = new Couche;
 	c->changerEtat(Couche::Etat::Active);
 	_couches.ajouter(c);
+
+	_couches.setActif(0);
+	activerCouche(_couches.actif());
 }
 
 Canevas::~Canevas()
@@ -30,9 +30,9 @@ bool Canevas::reinitialiser()
 		if (reinitialiserCouche(i) == false)
 			return false;
 
-	_indexCoucheActive = 0;
+	_couches.setActif(0);
 
-	return activerCouche(_indexCoucheActive);
+	return activerCouche(_couches.actif());
 }
 
 bool Canevas::reinitialiserCouche(int index)
@@ -71,10 +71,10 @@ bool Canevas::activerCouche(int index)
 	if (index < 0 || index >= _couches.taille())
 		return false;
 
-	if (_indexCoucheActive != -1)
-		_couches[_indexCoucheActive].changerEtat(Couche::Etat::Inactive);
+	if (_couches.actif() != -1)
+		_couches[_couches.actif()].changerEtat(Couche::Etat::Inactive);
 
-	_indexCoucheActive = index;
+	_couches.setActif(index);
 
 	return _couches[index].changerEtat(Couche::Etat::Active);
 }
@@ -84,14 +84,14 @@ bool Canevas::desactiverCouche(int index)
 	if (index < 0 || index >= _couches.taille())
 		return false;
 
-	if (index == _indexCoucheActive)
-		_indexCoucheActive = -1;
+	if (index == _couches.actif())
+		_couches.setActifAucun();
 
 	return _couches[index].changerEtat(Couche::Etat::Inactive);
 }
 
 bool Canevas::prochaineCouche() {
-	int newIndex = _indexCoucheActive;
+	int newIndex = _couches.actif();
 
 	if (++newIndex >= _couches.taille())
 		newIndex = _couches.taille() - 1;
@@ -100,7 +100,7 @@ bool Canevas::prochaineCouche() {
 }
 
 bool Canevas::precedenteCouche() {
-	int newIndex = _indexCoucheActive;
+	int newIndex = _couches.actif();
 
 	if (--newIndex < 0)
 		newIndex = 0;
@@ -119,11 +119,11 @@ int Canevas::derniereCouche() {
 }
 
 Couche* Canevas::obtenirCoucheActive() {
-	return &_couches[_indexCoucheActive];
+	return &_couches[_couches.actif()];
 }
 
 int Canevas::indexCoucheActive() {
-	return _indexCoucheActive;
+	return _couches.actif();
 }
 
 int Canevas::nbCouches() {
@@ -132,18 +132,18 @@ int Canevas::nbCouches() {
 
 bool Canevas::ajouterForme(Forme* p_forme)
 {
-	if (_indexCoucheActive < 0 || _indexCoucheActive >= _couches.taille())
+	if (_couches.actif() < 0 || _couches.actif() >= _couches.taille())
 		return false;
 
-	return _couches[_indexCoucheActive].ajouterForme(p_forme);
+	return _couches[_couches.actif()].ajouterForme(p_forme);
 }
 
 bool Canevas::retirerForme(int index)
 {
-	if (_indexCoucheActive < 0 || _indexCoucheActive >= _couches.taille())
+	if (_couches.actif() < 0 || _couches.actif() >= _couches.taille())
 		return false;
 
-	return _couches[_indexCoucheActive].retirerForme(index);
+	return _couches[_couches.actif()].retirerForme(index);
 }
 
 int Canevas::nbFormes() {
@@ -167,10 +167,10 @@ double Canevas::aire()
 
 bool Canevas::translater(int deltaX, int deltaY)
 {
-	if (_indexCoucheActive < 0 || _indexCoucheActive >= _couches.taille())
+	if (_couches.actif() < 0 || _couches.actif() >= _couches.taille())
 		return false;
 
-	return _couches[_indexCoucheActive].translater(deltaX, deltaY);
+	return _couches[_couches.actif()].translater(deltaX, deltaY);
 }
 
 void Canevas::afficher(ostream& s)

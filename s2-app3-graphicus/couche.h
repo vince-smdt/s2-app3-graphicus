@@ -52,7 +52,6 @@ public:
 private:
     Vecteur<Forme> formes;
     Etat etat;
-    int _indexFormeActive;
 };
 
 #endif

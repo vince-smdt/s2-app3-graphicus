@@ -12,7 +12,6 @@
 
 Couche::Couche() {
     etat = Etat::Initialisee;
-    _indexFormeActive = -1;
 }
 
 Couche::~Couche() {}
@@ -21,9 +20,9 @@ bool Couche::ajouterForme(Forme *forme) {
     if (etat != Etat::Active)
         return false;
 
-    _indexFormeActive = formes.taille();
-
-    return formes.ajouter(forme);
+    bool succes = formes.ajouter(forme);
+    formes.setActif(formes.taille() - 1);
+    return succes;
 }
 
 bool Couche::translater(int deltaX, int deltaY) {
@@ -67,39 +66,39 @@ const char* Couche::getEtatCStr() {
 }
 
 bool Couche::prochaineForme() {
-    if (formes.taille() > 0 && _indexFormeActive < formes.taille() - 1)
-        _indexFormeActive++;
+    if (formes.taille() > 0 && formes.actif() < formes.taille() - 1)
+        formes++;
 
     return true;
 }
 
 bool Couche::precedenteForme() {
-    if (formes.taille() > 0 && _indexFormeActive > 0)
-        _indexFormeActive--;
+    if (formes.taille() > 0 && formes.actif() > 0)
+        formes--;
 
     return true;
 }
 
 bool Couche::premiereForme() {
     if (formes.taille() > 0)
-        _indexFormeActive = 0;
+        formes.setActif(0);
 
     return true;
 }
 
 bool Couche::derniereForme() {
     if (formes.taille() > 0)
-        _indexFormeActive = formes.taille() - 1;
+        formes.setActif(formes.taille() - 1);
 
     return true;
 }
 
 Forme* Couche::obtenirFormeActive() {
-    return &formes[_indexFormeActive];
+    return &formes[formes.actif()];
 }
 
 int Couche::obtenirIndexFormeActive() {
-    return _indexFormeActive;
+    return formes.actif();
 }
 
 int Couche::nbFormes() {

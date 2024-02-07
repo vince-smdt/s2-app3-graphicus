@@ -56,7 +56,6 @@ public:
 
 private:
     Vecteur<Couche> _couches;
-    int _indexCoucheActive;
 };
 
 
