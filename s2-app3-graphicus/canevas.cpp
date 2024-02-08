@@ -14,7 +14,7 @@ Canevas::Canevas()
 {
 	Couche* c = new Couche;
 	c->changerEtat(Couche::Etat::Active);
-	_couches.ajouter(c);
+	_couches += c;
 
 	_couches.setActif(0);
 	activerCouche(_couches.actif());
@@ -49,7 +49,7 @@ bool Canevas::reinitialiserCouche(int index)
 }
 
 bool Canevas::ajouterCouche() {
-	return _couches.ajouter(new Couche)
+	return (_couches += new Couche)
 		   && derniereCouche();
 }
 

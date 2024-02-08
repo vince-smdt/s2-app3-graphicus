@@ -76,6 +76,11 @@ void InterfaceGUI::coucheTranslater(int deltaX, int deltaY) {
 }
 
 void InterfaceGUI::ajouterCercle(int x, int y, int rayon) {
+	if (rayon <= 0) {
+		messageErreur("Le cercle ne peut avoir un rayon nul!");
+		return;
+	}
+
 	if (_canevas.ajouterForme(new Cercle(x, y, rayon)) == false) {
 		messageErreur("Erreur lors de la creation d'un cercle!");
 		return;
@@ -91,6 +96,11 @@ void InterfaceGUI::ajouterCercle(int x, int y, int rayon) {
 }
 
 void InterfaceGUI::ajouterRectangle(int x, int y, int longueur, int largeur) {
+	if (largeur <= 0 || longueur <= 0) {
+		messageErreur("Le rectangle ne peut avoir des dimensions nulles!");
+		return;
+	}
+
 	if (_canevas.ajouterForme(new Rectangle(x, y, longueur, largeur)) == false)
 		messageErreur("Erreur lors de la creation d'un rectangle!");
 
@@ -104,6 +114,11 @@ void InterfaceGUI::ajouterRectangle(int x, int y, int longueur, int largeur) {
 }
 
 void InterfaceGUI::ajouterCarre(int x, int y, int cote) {
+	if (cote <= 0) {
+		messageErreur("Le carre ne peut avoir une longueur de cote nulle!");
+		return;
+	}
+
 	if (_canevas.ajouterForme(new Carre(x, y, cote)) == false)
 		messageErreur("Erreur lors de la creation d'un carre!");
 

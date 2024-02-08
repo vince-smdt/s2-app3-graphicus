@@ -20,7 +20,7 @@ bool Couche::ajouterForme(Forme *forme) {
     if (etat != Etat::Active)
         return false;
 
-    bool succes = formes.ajouter(forme);
+    bool succes = (formes += forme);
     formes.setActif(formes.taille() - 1);
     return succes;
 }
@@ -58,23 +58,23 @@ Couche::Etat Couche::getEtat() {
 
 const char* Couche::getEtatCStr() {
     switch (etat) {
-        case Etat::Initialisee: return "i";        break;
-        case Etat::Active:      return "a";        break;
-        case Etat::Inactive:    return "x";        break;
+        case Etat::Initialisee: return "i";    break;
+        case Etat::Active:      return "a";    break;
+        case Etat::Inactive:    return "x";    break;
     }
     return "erreur";
 }
 
 bool Couche::prochaineForme() {
     if (formes.taille() > 0 && formes.actif() < formes.taille() - 1)
-        formes++;
+        ++formes;
 
     return true;
 }
 
 bool Couche::precedenteForme() {
     if (formes.taille() > 0 && formes.actif() > 0)
-        formes--;
+        --formes;
 
     return true;
 }
