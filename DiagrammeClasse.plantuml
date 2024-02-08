@@ -158,17 +158,14 @@ class GraphicusGUI {
 }
 
 InterfaceGUI --|> GraphicusGUI
-
-Carre --|> Rectangle
-Cercle --|> Forme
-Rectangle --|> Forme
-InterfaceGUI *-- Canevas
-Vecteur o-- Forme
-Canevas *-- Couche
+Carre -up--|> Rectangle
+Cercle -up--|> Forme
+Rectangle -up--|> Forme
+Canevas -left--* InterfaceGUI
+Vecteur o---left Forme
+Canevas *---right Couche
 Couche *-- Vecteur
-
 Forme ..> Coordonnee
-
 Couche --> Etat
 
 
