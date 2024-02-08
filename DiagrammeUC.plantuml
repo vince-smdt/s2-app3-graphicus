@@ -1,0 +1,51 @@
+@startuml
+left to right direction
+
+actor Utilisateur as "Utilisateur"
+
+package "Graphicus-03 (GraphicusGUI)" {
+    'Fichier
+    usecase "Ouvrir un fichier" as UC1
+    usecase "Sauvegarder" as UC2
+    usecase "Quitter" as UC3
+
+    'Canvas
+    usecase "Réinitialiser canevas" as UC4
+    usecase "Ajouter couche" as UC5
+    usecase "Retirer couche active" as UC6
+    usecase "Afficher format texte" as UC7
+
+    'Formes
+    usecase "Retirer forme active" as UC8
+
+    'Navigation
+    usecase "Changer la couche active" as UC9
+    usecase "Changer la forme active" as UC10
+    
+    'Dessiner
+    usecase "Dessiner la forme" as UC11
+    usecase "Translater la couche active" as UC12
+    usecase "Voir ou cacher les information du canevas" as UC13
+    usecase "Activer ou désactiver le surlignage d'une couche" as UC14
+    usecase "Activer ou désactiver le mode pile" as UC15
+
+
+
+    Utilisateur -- UC1
+    Utilisateur -- UC2
+    Utilisateur -- UC3
+    Utilisateur -- UC4
+    Utilisateur -- UC5
+    Utilisateur -- UC6
+    Utilisateur -- UC7
+    Utilisateur -- UC8
+    Utilisateur -- UC9
+    Utilisateur -- UC10
+    Utilisateur -- UC11 
+    Utilisateur -- UC12
+    Utilisateur -- UC13
+    Utilisateur -- UC14
+    Utilisateur -- UC15
+}
+
+@enduml

@@ -1,0 +1,176 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Canevas {
+    -_couche[MAX_COUCHES] : Couche  
+
+    +Canevas()
+    +~Canevas()
+    +reinitialiser() : bool
+    +reinitialiserCouche() : bool
+    +ajouterCouche() : bool
+    +retirerCouche(int index) : bool
+    +activerCouche(int index) : bool
+    +activerCouche(int index) : bool
+    +desactiverCouche(int index) : bool
+    +prochaineCouche() : bool
+    +precedenteCouche() : bool
+    +premiereCouche() : bool
+    +derniereCouche() : int
+    +obtenirCoucheActive() : Couche*
+    +indexCoucheActive() : int
+    +nbCouches() : int
+    +modePile() : void
+
+    +ajouterForme(Forme *p_forme) : bool
+    +retirerForme(int index) : bool
+    +aire() : double
+    +translater(int deltaX, int deltaY) : bool
+    +afficher(ostream &s) : void
+}
+
+class Carre {
+    +Carre(int x = 0, int y = 0, int c = 1)
+    +~Carre()
+    +afficher(ostream &flot) : void
+}
+
+class Cercle {
+    -rayon : int
+
+    +Cercle(int x = 0, int y = 0, int r = 1)
+    +~Cercle()
+    +double aire() : double
+    +afficher(ostream &flot) : void
+}
+
+enum Etat {
+        Initialisee
+        Active
+        Inactive
+}
+
+struct Coordonnee {
+    x : int
+    y : int
+}
+
+class Couche {
+    -formes: Vecteur 
+    -etat: Etat
+
+    +Couche()
+    +~Couche()
+    +ajouterForme(Forme *forme) : bool
+    +translater(int deltaX, int deltaY) : bool
+    +reinitialiser() : bool
+    +changerEtat(Etat e) : bool
+    +getEtatCStr() : char*
+
+    +prochaineForme() : bool
+    +precedenteForme() : bool
+    +premiereForme() : bool
+    +derniereForme() : bool
+    +obtenirFormeActive() : Forme*
+    +obtenirIndexFormeActive() : int
+    +nbFormes() : int
+    +getEtat() : Etat
+    +aireTotal() : double
+    +afficher(ostream &flot) : void
+    +retirerForme(int index) : Forme*
+    +obtenirForme(int index) : Forme*
+}
+
+abstract class "Forme {abstrait}" as Forme {
+    #ancrage : Coordonnee
+
+    +Forme(int x = 0, int y = 0)
+    +~Forme()
+    +translater(int deltaX, int deltaY) : void
+    +getAncrage() : Coordonnee
+    +setAncrage(Coordonnee c) : void
+    + aire() &#123;abstract&#125; : double 
+    +afficher(ostream &s) &#123;abstract&#125; : void 
+}
+
+class Rectangle {
+    #_dimension : Coordonnee
+
+    +Rectangle(int x = 0, int y = 0, int l = 1, int h = 1)
+    +~Rectangle()
+    +aire() : double
+    +afficher(ostream &flot) : void
+}
+
+class Vecteur< T > {
+    -_elements : T**
+    -_taille : int
+    -_capacite : int
+    -_actif : int
+
+    +Vecteur()
+    +~Vecteur()
+    +capacite() : int
+    +doublerCapacite() : void
+    +vider() : void
+    +afficher(ostream &flot) : void
+    +modePile() : void
+	+actif() : int
+    +taille() : int
+    +estVide() : bool
+    +ajouter(T *element) : bool
+    +retirer(int index) : T*
+    +obtenir(int index) : T*
+
+}
+
+class InterfaceGUI {
+    +InterfaceGUI(const char* titre = "GraphicusGUI");
+	+separer(string entrer) : string*
+	+ouvrirFichier(const char* nom) : bool
+	+sauvegarderFichier(const char* nom) : bool
+	+reinitialiserCanevas() : void
+	+coucheAjouter() : void
+	+coucheRetirer() : void
+	+coucheTranslater(int deltaX, int deltaY) : void
+	+ajouterCercle(int x, int y, int rayon) : void
+	+ajouterRectangle(int x, int y, int longueur, int largeur) : void
+	+ajouterCarre(int x, int y, int cote) : void
+	+retirerForme() : void
+	+modePileChange(bool mode) : void
+	+couchePremiere() : void
+	+couchePrecedente() : void
+	+coucheSuivante(): void
+	+coucheDerniere(): void
+	+formePremiere(): void
+	+formePrecedente() : void
+	+formeSuivante() : void
+	+formeDerniere() : void
+	+updateInformation() : void
+	+rafraichir() : void
+private:
+	-_canevas : Canevas
+	-mesMesures : string[]
+}
+
+class GraphicusGUI {
+
+}
+
+InterfaceGUI --|> GraphicusGUI
+
+Carre --|> Rectangle
+Cercle --|> Forme
+Rectangle --|> Forme
+InterfaceGUI *-- Canevas
+Vecteur o-- Forme
+Canevas *-- Couche
+Couche *-- Vecteur
+
+Forme ..> Coordonnee
+
+Couche --> Etat
+
+
+
+@enduml

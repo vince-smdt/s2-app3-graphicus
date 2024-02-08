@@ -1,0 +1,23 @@
+@startuml
+skinparam ParticipantPadding 20
+hide footbox
+mainframe sd: Ajouter un cercle au canevas
+
+
+actor Utilisateur order 5
+participant "InterfaceGUI" as InterfaceGUI order 10
+participant "Canevas" as Canevas order 20
+participant "Couche" as Couche order 20
+participant "Vecteur" as Vecteur order 30
+participant "GraphicusGUI" as GraphicusGUI order 40
+
+Utilisateur -> InterfaceGUI: choisir le cercle
+InterfaceGUI --> Utilisateur: cercle choisi
+Utilisateur -> InterfaceGUI: ajouter cercle
+InterfaceGUI -> Canevas: ajouter cercle
+Canevas -> Couche: ajouter cercle
+Couche -> Vecteur: ajouter cercle
+InterfaceGUI -> GraphicusGUI : dessiner le canevas
+GraphicusGUI --> InterfaceGUI : canevas dessiné
+InterfaceGUI --> Utilisateur : canevas dessiné
+
